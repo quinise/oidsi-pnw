@@ -1,0 +1,63 @@
+.container {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+.headers {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    width: 100%;
+    height: 15%;
+}
+
+svg {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.headding {
+    display: block;
+    fill: #000080;
+    font-family: "Hammersmith One", sans-serif;
+}
+
+.subtitle {
+    fill: #808080;
+    display: block;
+    height: 30%;
+}
+
+.highlight {
+    display: block;
+    height: 25%;
+}
+
+path {
+    fill: transparent;
+}
+
+.intro-image-container { margin: 0 auto; }
+
+.introduction-img {
+    display: block;
+    margin: 0 auto;
+}
+
+.spacer { height: 5%}
+
+.member-statement {
+    color: #000080;
+    font-family: "Gudea", sans-serif;
+    margin: 0 auto;
+    max-width: 25%;
+}
+
+#obafemi-institute-logo-img {
+    display: block;
+    margin: 0 auto;
+    max-width: 45%;
+    height: 50%;
+}

@@ -1,0 +1,124 @@
+.container {
+    margin: auto;
+    width: 100%;
+}
+
+.cards {
+    margin: 15px;
+    height: 100%;
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.heading {
+  fill: #000080;
+  font-family: "Hammersmith One", sans-serif;
+}
+
+path {
+  fill: transparent;
+}
+
+.offering-img {
+    display: block;
+    max-height: 50%;
+    max-width: 25%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+}
+
+ul {
+    list-style: none;
+    text-align: center;
+    font-family: "Gudea", sans-serif;
+  }
+
+.service-list {
+  padding: 10px;
+  background-color: rgba(0, 0, 128, 0.2);
+  border: 2px solid #000080;
+  border-radius: 25px;
+  color: black;
+  width: 75%;
+  margin: 0 auto;
+}
+
+span {
+    margin-left: 2%;
+}
+
+  .ifa-readings {
+    display: none;
+    border: 2px solid #000080;
+    background-color: white;
+    width: 40%;
+  }
+
+  li:hover .ifa-readings {
+    display: inline-block;
+  }
+
+  .orisha-readings {
+    display: none;
+    border: 2px solid #000080;
+    background-color: white;
+    width: 40%;
+  }
+
+  li:hover .orisha-readings {
+    display: inline-block;
+  }
+
+  .esentaye {
+    display: none;
+    border: 2px solid #000080;
+    background-color: white;
+    width: 40%;
+  }
+
+  li:hover .esentaye {
+    display: inline-block;
+  }
+
+  .baths-soaps {
+    display: none;
+    border: 2px solid #000080;
+    background-color: white;
+    width: 40%;
+  }
+
+  .cleaning {
+    display: none;
+    border: 2px solid #000080;
+    background-color: white;
+    width: 40%;
+  }
+
+  li:hover .cleaning {
+    display: inline-block;
+  }
+
+  .rites {
+    display: none;
+    border: 2px solid #000080;
+    background-color: white;
+    width: 40%;
+  }
+
+  li:hover .rites {
+    display: inline-block;
+  }
+
+  .community {
+    display: none;
+    border: 2px solid #000080;
+    background-color: white;
+    width: 40%;
+  }
+
+  contact-header {
+    margin: 5%;
+  }

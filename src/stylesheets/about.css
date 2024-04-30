@@ -1,0 +1,49 @@
+.container {
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+}
+
+h1 {
+    margin-right: 50%;
+    width: 100%;
+}
+
+svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.headding {
+    font-family: "Hammersmith One", sans-serif;
+}
+
+path { fill: transparent; }
+
+.about-section { margin-bottom: 10%; }
+
+.about-column { margin: 0 auto; }
+
+.about-img {
+    display: block;
+    max-width: 70%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    object-fit:contain;
+    width: 300px;
+    height: 400px;
+    display: block;
+}
+
+.about-paragraph {
+    color: black;
+    background-color: rgba(0, 0, 128, 0.2);
+    border: 2px solid #000080;
+    border-radius: 25px;
+    padding: 20px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 5%;
+    font-family: "Gudea", sans-serif;
+}
