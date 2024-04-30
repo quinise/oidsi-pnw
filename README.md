@@ -2,7 +2,7 @@
 
 # OIDSI-PNW
 
-This is the Vue.js code that makes up the OIDSI - PNW organization's website. OIDSI - PNW (Ile Iwore Bogbe) is the Seattle, WA chapter of Obafemi's Institute for the Divine Science of Ifa. The site includes an events calendar, photo gallery, and EmailJS contact form.
+This is the Vue.js app that makes up the OIDSI - PNW organization's website. OIDSI - PNW (Ile Iwore Bogbe) is the Seattle, WA chapter of Obafemi's Institute for the Divine Science of Ifa. The site includes an events calendar, photo gallery, and EmailJS contact form.
 
 ## Customize configuration
 
