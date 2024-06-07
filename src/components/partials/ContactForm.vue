@@ -13,15 +13,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
     <div class="container">
-      <form id="contact-form">
-        <!-- To simplify the tutorial, the value is static. -->
-        <input type="hidden" name="contact_number" value="697483">
+      <form id="contact-form" ref="form" @submit.prevent="sendEmail">
+        <input type="hidden" name="contact_number" value="1">
         <label>Name</label>
-        <input type="text" name="user_name">
+        <input type="text" name="user_name" required />
         <label>Email</label>
-        <input type="email" name="user_email">
+        <input type="email" name="user_email" required />
         <label>Message</label>
-        <textarea name="message"></textarea>
+        <textarea name="message" required></textarea>
         <input type="submit" value="Send">
       </form>
     </div>    
@@ -38,14 +37,16 @@ export default {
    methods: {
     sendEmail() {
       emailjs
-        .sendForm('OIDSIPNWemailService', 'contact_form', this.$refs.form, {
+        .sendForm('OIDSIPNWemailService', 'template_9wiizu7', this.$refs.form, {
           publicKey: 'jGmLOWnQABZ-z6y33',
         })
         .then(
           () => {
+            this.$refs.form.reset(); 
             console.log('SUCCESS!');
           },
           (error) => {
+            this.$refs.form.reset(); 
             console.log('FAILED...', error.text);
           },
         );

@@ -1,16 +1,16 @@
 <template>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <title>Services</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gudea&family=Hammersmith+One&display=swap">
-  <link rel="stylesheet" type="text/css" href="/src/stylesheets/services.css" />
-  <link rel="stylesheet" type="text/css" href="/src/stylesheets/global.css" />
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gudea&family=Hammersmith+One&display=swap">
+    <link rel="stylesheet" type="text/css" href="/src/stylesheets/services.css" />
+    <link rel="stylesheet" type="text/css" href="/src/stylesheets/global.css" />
+  </head>
   <div class="container d-flex flex-column">
     <svg viewBox="0 0 30 2.85" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -48,7 +48,6 @@
 </template>
 
 <script>
-
 export default {
    name:'ServicesView',
    components: {},
