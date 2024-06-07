@@ -1,5 +1,5 @@
 <template>
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -38,7 +38,6 @@
 </template>
 
 <script>
-
 export default {
    name:'AboutView',
    components: {},
