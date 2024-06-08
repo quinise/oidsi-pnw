@@ -3,11 +3,6 @@
     width: 100%;
 }
 
-.cards {
-    margin: 15px;
-    height: 100%;
-}
-
 svg {
   display: block;
   margin: 0 auto;
@@ -20,6 +15,11 @@ svg {
 
 path {
   fill: transparent;
+}
+
+.cards {
+    margin: 15px;
+    height: 100%;
 }
 
 .offering-img {

@@ -7,10 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gudea&family=Hammersmith+One&display=swap">
-    <link rel="stylesheet" type="text/css" href="/src/stylesheets/contact.css">
-    <link rel="stylesheet" type="text/css" href="/src/stylesheets/contactForm.css">
-    <link rel="stylesheet" type="text/css" href="/src/stylesheets/global.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
     <div class="container">
       <form id="contact-form" ref="form" @submit.prevent="sendEmail">
