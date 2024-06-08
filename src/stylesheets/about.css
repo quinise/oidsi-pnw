@@ -9,6 +9,12 @@ h1 {
     width: 100%;
 }
 
+.about-svg-container {
+    padding-bottom: 0%; /*this is your height/width ratio*/
+    height: 0;
+    margin-bottom: 10%;
+}
+
 svg {
     display: block;
     margin: 0 auto;
@@ -20,7 +26,7 @@ svg {
 
 path { fill: transparent; }
 
-.about-section { margin-bottom: 10%; }
+#about-section { margin-bottom: 10%; }
 
 .about-column { margin: 0 auto; }
 
@@ -46,4 +52,8 @@ path { fill: transparent; }
     margin: 0 auto;
     margin-top: 5%;
     font-family: "Gudea", sans-serif;
+}
+
+@media only screen and (max-device-width : 480px) {
+    
 }

@@ -1,4 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap';
+import 'bootstrap/dist/css/bootstrap.css'
 import './stylesheets/about.css';
 import './stylesheets/contact.css';
 import './stylesheets/contactForm.css';

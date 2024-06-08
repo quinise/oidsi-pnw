@@ -1,31 +1,27 @@
 <template>
-<!DOCTYPE html>
-<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>Services</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gudea&family=Hammersmith+One&display=swap">
-    <link rel="stylesheet" type="text/css" href="/src/stylesheets/services.css" />
-    <link rel="stylesheet" type="text/css" href="/src/stylesheets/global.css" />
   </head>
   <div class="container d-flex flex-column">
-    <svg viewBox="0 0 30 2.85" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="servicesGradient" x1="0%" y1="15%" x2="0%" y2="100%">
-          <stop offset="0%" style="stop-color:#000080;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#BCE32D;stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <path id="MyPath" fill="none" d="M 0 6 Q 14 -5 30 5" pathLength="2" />
-      <text class="heading is-4" font-size="1.5" dominant-baseline="hanging" text-anchor="middle">
-        <textPath href="#MyPath" startOffset="1" fill="url(#servicesGradient)">
-          Services
-        </textPath>
-      </text>
-    </svg>
+    <div class="services-svg-container">
+      <svg viewBox="0 0 30 2.85" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="servicesGradient" x1="0%" y1="15%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#000080;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#BCE32D;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <path id="MyPath" fill="none" d="M 0 6 Q 14 -5 30 5" pathLength="2" />
+        <text class="heading is-4" font-size="2.75" dominant-baseline="hanging" text-anchor="middle">
+          <textPath href="#MyPath" startOffset="1" fill="url(#servicesGradient)">
+            Services
+          </textPath>
+        </text>
+      </svg>
+    </div>
     <div id="cards">
       <img class="offering-img" src="/src/assets/images/yemoja-offering.png" alt="An IFA offering to Yemoja presented at Alki Beach. A cornucopia of fruits including whole and cut watermelon, bunches of ripe banannas, cut pineapple rounds, strawberries, and colorful bouquets all displayed on a turquoise cloth."/>
       <div class="row justify-content-center contact-header">
@@ -41,10 +37,8 @@
         <li>Community Classes and Workshops (<i>for youth and adults</i>)<span class="community" aria-label="Description for classes and workshops">This is the text that goes with the Community services. It is a short paragraph long. The text is black and has a solid, blue border. HTML/CSS is fun!</span></li><br>
       </ul>
     </div>
-    <div class="row">
-    </div>
+    <div class="row"></div>
   </div>
-  </html>
 </template>
 
 <script>
