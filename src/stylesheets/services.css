@@ -3,14 +3,13 @@
     width: 100%;
 }
 
-svg {
-  display: block;
-  margin: 0 auto;
-}
-
 .heading {
   fill: #000080;
   font-family: "Hammersmith One", sans-serif;
+}
+
+.services-svg-container {
+  position: relative;
 }
 
 path {
@@ -54,7 +53,7 @@ span {
     display: none;
     border: 2px solid #000080;
     background-color: white;
-    width: 40%;
+    width: 100%;
   }
 
   li:hover .ifa-readings {
@@ -65,7 +64,7 @@ span {
     display: none;
     border: 2px solid #000080;
     background-color: white;
-    width: 40%;
+    width: 100%;
   }
 
   li:hover .orisha-readings {
@@ -76,7 +75,7 @@ span {
     display: none;
     border: 2px solid #000080;
     background-color: white;
-    width: 40%;
+    width: 100%;
   }
 
   li:hover .esentaye {
@@ -87,14 +86,14 @@ span {
     display: none;
     border: 2px solid #000080;
     background-color: white;
-    width: 40%;
+    width: 100%;
   }
 
   .cleaning {
     display: none;
     border: 2px solid #000080;
     background-color: white;
-    width: 40%;
+    width: 100%;
   }
 
   li:hover .cleaning {
@@ -105,7 +104,7 @@ span {
     display: none;
     border: 2px solid #000080;
     background-color: white;
-    width: 40%;
+    width: 100%;
   }
 
   li:hover .rites {
@@ -116,9 +115,26 @@ span {
     display: none;
     border: 2px solid #000080;
     background-color: white;
-    width: 40%;
+    width: 100%;
   }
 
   contact-header {
     margin: 5%;
   }
+
+@media only screen and (max-device-width : 480px) {
+  .services-svg-container {
+      margin-top: 10%;
+      margin-bottom: 0%;
+      padding-bottom: 22%; /*this is your height/width ratio*/
+      height: 100%;
+  }
+
+  .service-list {
+    width: 85%;
+  }
+
+  li:hover .ifa-readings, li:hover .orisha-readings, li:hover .esentaye, li:hover .cleaning, li:hover .rites {
+    width: 100%
+  }
+}

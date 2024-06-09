@@ -14,11 +14,7 @@
 .main-title {
     padding-bottom: 10%; /*this is your height/width ratio*/
     height: 0;
-}
-
-svg {
-    display: block;
-    margin: 0 auto;
+    position: relative;
 }
 
 .headding {
@@ -34,7 +30,8 @@ svg {
     height: 0;
     width: 100%;
     margin-top: 3%;
-    fill: #808080; 
+    fill: #808080;
+    position: relative;
 }
 
 .highlight {
@@ -74,11 +71,13 @@ path {
 
 @media only screen and (max-device-width : 480px) {
   .main-title {
-    margin-top: 10%;
+    padding-top: 10%;
+    padding-bottom: 10%; /*this is your height/width ratio*/
+    height: 0;
   }
 
   .subtitle {
-    height: 60%;
-    margin-top: 1%;
+    padding-bottom: 10%; /*this is your height/width ratio*/
+    height: 0;
   }
 }
