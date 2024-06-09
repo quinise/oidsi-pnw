@@ -41,3 +41,9 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
+
+@media only screen and (max-device-width : 480px) {
+  #contact-form {
+    width: 85%;
+  }
+}

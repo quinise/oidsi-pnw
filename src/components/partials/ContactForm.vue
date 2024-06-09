@@ -1,8 +1,5 @@
 <template>
-  <!DOCTYPE html>
-  <html lang="en">
   <head>
-    <meta charset="UTF-8">
     <title>Contact Form</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +17,6 @@
         <input type="submit" value="Send">
       </form>
     </div>    
-  </html>
 </template>
 
 <script>
