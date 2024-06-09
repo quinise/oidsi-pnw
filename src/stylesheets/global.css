@@ -123,3 +123,23 @@ svg.sep {
 #footer a:hover { text-decoration: none; }
 
 #footer a:active { text-decoration: none; }
+
+@media only screen and (max-device-width : 480px) {
+    .dash {
+        margin-bottom: 5%;
+        margin-top: 5%;
+        padding-bottom: 10%; /*this is your height/width ratio*/
+        height: 0;
+        position: relative;
+    }
+    
+    svg {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+    }
+  }
