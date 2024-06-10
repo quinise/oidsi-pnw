@@ -124,7 +124,7 @@ svg.sep {
 
 #footer a:active { text-decoration: none; }
 
-@media only screen and (max-device-width : 480px) {
+@media only screen and (max-device-width : 1024px) {
     .dash {
         margin-bottom: 5%;
         margin-top: 5%;

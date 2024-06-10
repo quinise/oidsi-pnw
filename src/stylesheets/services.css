@@ -122,7 +122,7 @@ span {
     margin: 5%;
   }
 
-@media only screen and (max-device-width : 480px) {
+@media only screen and (max-device-width : 1024px) {
   .services-svg-container {
       margin-top: 10%;
       margin-bottom: 0%;
