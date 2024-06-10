@@ -69,7 +69,7 @@ path {
     height: 50%;
 }
 
-@media only screen and (max-device-width : 480px) {
+@media only screen and (max-device-width : 1024px) {
   .main-title {
     padding-top: 10%;
     padding-bottom: 10%; /*this is your height/width ratio*/
