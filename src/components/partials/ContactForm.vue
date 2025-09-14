@@ -23,22 +23,22 @@
 import emailjs from '@emailjs/browser';
 
 export default {
-   name:'ContactForm',
-   components: {
-   },
-   methods: {
+  name: 'ContactForm',
+  components: {
+  },
+  methods: {
     sendEmail() {
       emailjs
         .sendForm('OIDSIPNWemailService', 'template_9wiizu7', this.$refs.form, {
-          publicKey: 'jGmLOWnQABZ-z6y33',
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
         })
         .then(
           () => {
-            this.$refs.form.reset(); 
+            this.$refs.form.reset();
             console.log('SUCCESS!');
           },
           (error) => {
-            this.$refs.form.reset(); 
+            this.$refs.form.reset();
             console.log('FAILED...', error.text);
           },
         );
