@@ -1,0 +1,14 @@
+.intro {
+    margin: 0 auto;
+}
+
+.calendar {
+    text-align:center;
+    width:100%;
+    border: 2px solid #000080;
+}
+
+.calendar > iframe{ width: 100%; }
+
+p { text-align: center; }
+
