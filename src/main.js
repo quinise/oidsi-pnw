@@ -1,19 +1,25 @@
 import 'bootstrap/dist/js/bootstrap';
 import 'bootstrap/dist/css/bootstrap.css'
-import './stylesheets/about.css';
-import './stylesheets/contact.css';
-import './stylesheets/contactForm.css';
-import './stylesheets/events.css';
-import './stylesheets/gallery.css';
-import './stylesheets/global.css';
-import './stylesheets/home.css';
-import './stylesheets/services.css';
-import PortalVue from 'portal-vue'
-import { createApp } from 'vue'
-import router from '/router.js'
+import './styles/theme.scss';
+import 'bootstrap';
+import { createApp, nextTick } from 'vue'
+import router from '../router'
 import App from '/src/App.vue'
+import '@/assets/reduced-motion.css'
 
-createApp(App)
-  .use(PortalVue)
-  .use(router)
-  .mount('#app')
+const app = createApp(App)
+
+// Add a data attribute on <html> so CSS/JS can key off it if needed
+const applyRMAttr = () => {
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  document.documentElement.setAttribute('data-reduced-motion', reduce ? 'reduce' : 'no-preference')
+}
+applyRMAttr()
+window.matchMedia?.('(prefers-reduced-motion: reduce)')?.addEventListener('change', applyRMAttr)
+
+router.afterEach(async () => {
+  await nextTick()
+  document.getElementById('app-main')?.focus()
+})
+
+app.use(router).mount('#app')

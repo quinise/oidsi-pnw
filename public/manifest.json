@@ -1,0 +1,9 @@
+{
+  "name": "OIDSI-PNW",
+  "short_name": "OIDSI",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000080",
+  "icons": []
+}

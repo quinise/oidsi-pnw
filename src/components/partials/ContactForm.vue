@@ -1,48 +1,123 @@
 <template>
-  <head>
-    <title>Contact Form</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gudea&family=Hammersmith+One&display=swap">
-  </head>
-    <div class="container">
-      <form id="contact-form" ref="form" @submit.prevent="sendEmail">
-        <input type="hidden" name="contact_number" value="1">
-        <label>Name</label>
-        <input type="text" name="user_name" required />
-        <label>Email</label>
-        <input type="email" name="user_email" required />
-        <label>Message</label>
-        <textarea name="message" required></textarea>
-        <input type="submit" value="Send">
-      </form>
-    </div>    
+  <form
+    id="contact-form"
+    ref="formEl"
+    class="needs-validation"
+    novalidate
+    @submit.prevent="onSubmit"
+    @invalid="onInvalid"
+  >
+    <!-- Status messages (SR-friendly) -->
+    <div class="mb-3" aria-live="polite" aria-atomic="true">
+      <div v-if="status.type === 'success'" class="alert alert-success py-2 mb-2">
+        {{ status.message }}
+      </div>
+      <div v-else-if="status.type === 'error'" class="alert alert-danger py-2 mb-2">
+        {{ status.message }}
+      </div>
+    </div>
+
+    <!-- Hidden fields -->
+    <input type="hidden" name="contact_number" :value="contactNumber" />
+    <div class="d-none" aria-hidden="true">
+      <label></label>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <!-- Name -->
+    <div class="mb-3 text-start">
+      <label for="cf-name" class="form-label">Name</label>
+      <input
+        id="cf-name"
+        name="user_name"
+        type="text"
+        class="form-control"
+        required
+        :class="{'is-invalid': invalidFields.name}"
+        :aria-invalid="invalidFields.name ? 'true' : 'false'"
+        aria-errormessage="cf-name-error"
+        aria-describedby="cf-name-error"
+        @blur="touch('name')"
+      />
+      <div id="cf-name-error" class="invalid-feedback" role="alert" aria-live="polite">
+        Please enter your name.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3 text-start">
+      <label for="cf-email" class="form-label">Email</label>
+      <input
+        id="cf-email"
+        name="user_email"
+        type="email"
+        class="form-control"
+        required
+        inputmode="email"
+        autocomplete="email"
+        :class="{'is-invalid': invalidFields.email}"
+        :aria-invalid="invalidFields.email ? 'true' : 'false'"
+        aria-errormessage="cf-email-error"
+        aria-describedby="cf-email-help cf-email-error"
+        @blur="touch('email')"
+      />
+      <div id="cf-email-help" class="form-text">We’ll only use this to reply.</div>
+      <div id="cf-email-error" class="invalid-feedback" role="alert" aria-live="polite">
+        Please enter a valid email address.
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div class="mb-3 text-start">
+      <label for="cf-message" class="form-label">Message</label>
+      <textarea
+        id="cf-message"
+        name="message"
+        class="form-control"
+        rows="6"
+        required
+        :class="{'is-invalid': invalidFields.message}"
+        :aria-invalid="invalidFields.message ? 'true' : 'false'"
+        aria-errormessage="cf-message-error"
+        aria-describedby="cf-message-error"
+        @blur="touch('message')"
+      ></textarea>
+      <div id="cf-message-error" class="invalid-feedback" role="alert" aria-live="polite">
+        Please include a brief message.
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="d-grid d-sm-flex gap-2 justify-content-sm-end">
+      <button
+        type="submit"
+        class="btn btn-success fw-semibold btn-contrast"
+        :disabled="submitting"
+        :aria-busy="submitting ? 'true' : 'false'"
+      >
+        <span v-if="submitting" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        {{ submitting ? 'Sending…' : 'Send' }}
+      </button>
+    </div>
+  </form>
 </template>
 
-<script>
-import emailjs from '@emailjs/browser';
+<script setup lang="ts">
+import { useContactForm } from '@/composables/useContactForm';
 
-export default {
-  name: 'ContactForm',
-  components: {
-  },
-  methods: {
-    sendEmail() {
-      emailjs
-        .sendForm('OIDSIPNWemailService', 'template_9wiizu7', this.$refs.form, {
-          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-        })
-        .then(
-          () => {
-            this.$refs.form.reset();
-            console.log('SUCCESS!');
-          },
-          (error) => {
-            this.$refs.form.reset();
-            console.log('FAILED...', error.text);
-          },
-        );
-    },
-  },
-}
+const {
+    formEl,
+    fieldSr,
+    submitting,
+    status,
+    invalidFields,
+    contactNumber,
+    touch,
+    onInvalid,
+    onSubmit,
+  } = useContactForm();
 </script>
+
+<style scoped>
+  .btn-contrast { color: #ffffff !important; font-weight: 700; letter-spacing: .2px; }
+</style>
