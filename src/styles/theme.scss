@@ -1,0 +1,78 @@
+/* ----------------------------------------------------
+  OIDSI-PNW Bootstrap Theme (Sass)
+-----------------------------------------------------*/
+
+:root {
+  --heading-font: 'Hammersmith One', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --body-font: 'Gudea', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  --navy: #000080;
+  --gray: #808080;
+  --green: #4CAF50;
+}
+
+html, body {
+  font-family: var(--body-font);
+}
+
+h1, h2, h3, h4, h5, h6,
+.brand-text {
+  font-family: var(--heading-font);
+}
+
+$primary:   #000080;  // Navy
+$success:   #2e7d32;  // Highlight green
+$gray-600:  #808080;  // Mid gray
+$white:     #ffffff;
+$black:     #0b172a;
+
+$body-bg:    $white;
+$body-color: $black;
+
+$theme-colors: (
+  "primary":   $primary,
+  "success":   $success,
+  "secondary": $gray-600,
+  "info":      #0ea5e9,
+  "warning":   #f59e0b,
+  "danger":    #dc2626,
+  "light":     #f8f9fa,
+  "dark":      #111827,
+
+  "highlight": $success
+);
+
+$link-color: $primary;
+$link-hover-decoration: underline;
+$focus-ring-color: rgba($primary, .35);
+$btn-focus-width: .2rem;
+
+/* Reduced motion respect */
+$enable-transitions: true;
+
+@import "bootstrap/scss/bootstrap";
+
+h1.gradient-title {
+  background: linear-gradient(to bottom, #000080 30%, #4CAF50 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent !important;
+
+  display: inline-block;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute; left: 0; top: 0;
+  transform: translateY(-200%); background: $white; color: $black;
+  padding: .5rem .75rem; border: 2px solid $black; z-index: 1000;
+}
+.skip-link:focus { transform: translateY(0); }

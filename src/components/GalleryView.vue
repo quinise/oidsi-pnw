@@ -1,70 +1,169 @@
 <template>
-  <head>
-    <title>Gallery</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gudea&family=Hammersmith+One&display=swap">
-  </head>
-  <div class="wrapper col">
-    <div class="intro row">
-      <h1 class="justify-content-center">A nifẹ lati pin awọn akoko ti o dara</h1>
-      <h2>We love to share good times</h2>
-    </div>
-    <dash />
-    <div class="slideshow row">
-      <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="/src/assets/images/gallery/3-women.png" class="d-block w-100" alt="Three female IFA priestesses smiling and posing for a picture in the setting sun">
+  <section class="bg-light py-5">
+    <div class="container text-center">
+
+      <!-- Intro -->
+      <h1 class="display-6 fw-semibold gradient-title mt-5 mb-3">
+        A nifẹ lati pin àwọn àkókò tí ó dára
+      </h1>
+      <h2 class="h5 text-black mb-4">We love to share good times</h2>
+
+      <!-- Responsive Carousel -->
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <div
+            id="galleryCarousel"
+            class="carousel slide"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Gallery"
+            data-bs-ride="carousel"
+            data-bs-interval="5000"
+          >
+            <!-- Slides -->
+            <div class="carousel-inner gallery-frame">
+              <div
+                v-for="(slide, i) in slides"
+                :key="i"
+                :class="['carousel-item', { active: i === 0 }]"
+              >
+                <img
+                  class="gallery-img"
+                  :src="slide.src"
+                  :alt="slide.alt"
+                  loading="lazy"
+                  :tabindex="i === activeIndex ? 0 : -1"
+                  :aria-hidden="i !== activeIndex"
+                />
+              </div>
+            </div>
+
+            <!-- Prev / Next -->
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#galleryCarousel"
+              data-bs-slide="prev"
+              aria-label="Previous slide"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#galleryCarousel"
+              data-bs-slide="next"
+              aria-label="Next slide"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+              <button
+                v-for="(slide, i) in slides"
+                :key="'ind-' + i"
+                type="button"
+                data-bs-target="#galleryCarousel"
+                :data-bs-slide-to="i"
+                :class="{ active: i === 0 }"
+                :aria-label="`Slide ${i + 1}`"
+                :aria-current="i === activeIndex ? 'true' : undefined"
+              ></button>
+            </div>
           </div>
-          <div class="carousel-item">
-            <img src="/src/assets/images/gallery/cookout5.png" class="d-block w-100" alt="A large group of Aborisha sit with three IFA priests who sit on a mat in attention and prayer">
+
+          <!-- Slide count -->
+          <div class="row justify-content-center my-3">
+            <div class="col-auto">
+              <span class="text-muted small">
+                Slide {{ activeIndex + 1 }} / {{ slides.length }}
+              </span>
+            </div>
           </div>
-          <div class="carousel-item">
-            <img src="/src/assets/images/gallery/kim-omi-posing-white.png" class="d-block w-100" alt="Two Ile Iwore-Bogbe priestesses strike poses and make cheeky faces, wearing long all-white traditionally African clothing at the an IFA conference">
-          </div>
-          <div class="carousel-item">
-            <img src="/src/assets/images/gallery/omi-fasanmi-green.png" class="d-block w-100" alt="An IFA priest of Ogun and and an IFA priestess of Yemoja, wearing matching green, orange, and white traditionally African clothing, pose in-front of a step-and-repeat backdrop of the O.I.D.S.I. logo at the 2022 Biennial O.I.D.S.I. Conference">
-          </div>
-          <div class="carousel-item">
-            <img src="/src/assets/images/gallery/omi-and-khepra-green.png" class="d-block w-100" alt="An IFA priest of Shango and an IFA priestess of Yemoja, wearing matching green, orange, and white traditionally African clothing, pose in-front of a step-and-repeat backdrop of the O.I.D.S.I. logo at the 2022 Biennial O.I.D.S.I. Conference">
-          </div>
-          <div class="carousel-item">
-            <img src="/src/assets/images/gallery/omiero-base.png" class="d-block w-100" alt="The ingredients for an omiero, red and white flowers, herbs, and powders, are layed out in a row on a tan mat laid atop a larger green IFA priest's mat">
-          </div>
-          <div class="carousel-item">
-            <img src="/src/assets/images/gallery/making-omieros.png" class="d-block w-100" alt="A small group of Aborisha sit on over-turned buckets, singing and chatting while making omieros in the late afternoon sun">
-          </div>
-          <div class="carousel-item">
-            <img src="/src/assets/images/ile-at-conference.png" class="d-block w-100" alt="Ile Iwore-Bogbe aborisha and priests, in matching green, orange, and white traditional African clothes, all smiling and posing for a photo at the anual 2022 biennial IFA conference with Chief Olowo Obafemi Feyemi against a step-and-repeat backdrop of the O.I.D.S.I. logo">
-          </div>
-          <div class="carousel-item">
-            <img src="/src/assets/images/cookout-crowd4.jpeg" class="d-block w-100" alt="Aborisha, priests and and guests from other Iles sit and stand gathered to celebrate their ancestors in a circle listening to an IFA priest speak">
-          </div>
-          <div class="carousel-item">
-            <img src="/src/assets/images/ancestor-offering.jpeg" class="d-block w-100" alt="A table covered in a white cloth with a blue and orange strip down the middle; and in an IFA offering of bananas, oranges, flowers, kola nuts, plantains, durian, candles, boquets of daisies, roses, and other flowers, a money tree, money, smooth stones and water to the ancestors">
-          </div>
+
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
+
     </div>
-  </div>
+  </section>
 </template>
 
-<script>
-import dash from '/src/components/partials/dash.vue'
+<script setup lang="ts">
+import { useCarouselFocus } from '@/composables/useCarouselFocus'; // keep your focus util
 
-export default {
-   name:'GalleryView',
-   components: {
-    dash,
-   },
-}
+import img10 from '@/assets/images/ancestor-offering.jpeg'
+import img9 from '@/assets/images/cookout-crowd4.jpeg'
+import img1 from '@/assets/images/gallery/3-women.png'
+import img2 from '@/assets/images/gallery/cookout5.png'
+import img3 from '@/assets/images/gallery/kim-omi-posing-white.png'
+import img7 from '@/assets/images/gallery/making-omieros.png'
+import img5 from '@/assets/images/gallery/omi-and-khepra-green.png'
+import img4 from '@/assets/images/gallery/omi-fasanmi-green.png'
+import img6 from '@/assets/images/gallery/omiero-base.png'
+import img8 from '@/assets/images/ile-at-conference.png'
+
+const slides = [
+  { src: img1,  alt: 'Three IFA priestesses smiling at sunset.' },
+  { src: img2,  alt: 'Aborisha gathered with three IFA priests seated on a mat.' },
+  { src: img3,  alt: 'Two priestesses in white posing playfully at an IFA conference.' },
+  { src: img4,  alt: 'Priest of Ogun and priestess of Yemoja in green/orange/white attire.' },
+  { src: img5,  alt: 'Priest of Shango and priestess of Yemoja at 2022 OIDSI conference.' },
+  { src: img6,  alt: 'Omiero ingredients arranged on a mat.' },
+  { src: img7,  alt: 'Small group making omieros outdoors, singing and chatting.' },
+  { src: img8,  alt: 'Ile Iwori-Bogbe group photo with Chief Obafemi at conference.' },
+  { src: img9,  alt: 'Community circle listening to an IFA priest speak.' },
+  { src: img10, alt: 'Ancestor offering table with fruit, flowers, candles, and water.' },
+]
+
+// Tracks which slide is active so only that slide is focusable
+const { activeIndex } = useCarouselFocus('galleryCarousel')
 </script>
+
+<style scoped>
+:root {
+  --gallery-max-h: 320px;
+  --gallery-max-w: 600px;
+}
+
+h2, .card, .btn {
+  font-family: var(--body-font);
+}
+
+.gallery-frame {
+  border: 2px solid #000080;
+  border-radius: .75rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.15);
+  background: #fff;
+  padding: .5rem;
+}
+
+.carousel-item {
+  min-height: calc(var(--gallery-max-h) + 1rem);
+}
+
+.carousel-item.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-img {
+  max-height: var(--gallery-max-h);
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+@media (max-width: 576px) {
+  :root { --gallery-max-h: 300px; }
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: rgba(0, 0, 128, 0.85);
+}
+</style>

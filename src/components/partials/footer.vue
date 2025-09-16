@@ -1,16 +1,38 @@
 <template>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gudea&family=Hammersmith+One&display=swap">
-</head>
-<div id="footer" class="fixed-bottom row">
-  <div class="container-fluid">
-    <p class="center-text">Created by <a href="https://quinise.ercolano.com/" aria-label="Link to developer's website">Quinise</a></p>
-  </div>
-  </div>
-</html>
+  <footer id="footer" class="bg-light text-primary py-3 mt-auto border-top">
+    <div class="container text-center">
+      <p class="mb-0 small">
+        Created by
+        <a
+          target="_blank" rel="noopener noreferrer"
+          href="https://quinise.ercolano.com/"
+          aria-label="Link to developer's website"
+          class="fw-semibold text-success text-decoration-none"
+        >
+          Quinise<span class="sr-only"> (opens in a new tab)</span>
+        </a>
+      </p>
+    </div>
+  </footer>
 </template>
+
+<script setup lang="ts"></script>
+
+<style scoped>
+  footer {
+    font-family: 'Gudea', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+
+  /* Brand colors */
+  .text-primary {
+    color: #000080 !important; /* navy */
+  }
+  .text-success {
+    color: #4CAF50 !important; /* highlight green */
+  }
+
+  footer a:hover {
+    text-decoration: underline !important ;
+    color: #000080 !important;
+  }
+</style>
