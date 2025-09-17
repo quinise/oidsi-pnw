@@ -15,10 +15,11 @@
     "@emailjs/browser": "^4.3.3",
     "@floating-ui/vue": "^1.0.6",
     "@popperjs/core": "^2.11.8",
+    "@vue/compiler-sfc": "^3.5.21",
     "bootstrap": "^5.3.8",
     "jquery": "^3.7.1",
     "portal-vue": "^3.0.0-beta.0",
-    "vue": "^3.4.21",
+    "vue": "^3.5.21",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
@@ -28,8 +29,9 @@
     "@types/jsdom": "^21.1.7",
     "@types/node": "^20.19.15",
     "@types/testing-library__jest-dom": "^5.14.9",
-    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitejs/plugin-vue": "^6.0.1",
     "@vitest/ui": "^3.2.4",
+    "@vitest/coverage-v8": "3.2.4",
     "axe-core": "^4.10.3",
     "eslint": "^9.35.0",
     "eslint-plugin-vue": "^10.4.0",
@@ -40,5 +42,8 @@
     "vite": "^7.1.5",
     "vitest": "^3.2.4",
     "vitest-axe": "^0.1.0"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   }
 }
