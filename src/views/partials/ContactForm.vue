@@ -9,9 +9,15 @@
   >
     <!-- Status messages (SR-friendly) -->
     <div class="mb-3" aria-live="polite" aria-atomic="true">
-      <div v-if="status.type === 'success'" class="alert alert-success py-2 mb-2">
-        {{ status.message }}
-      </div>
+      <div
+          v-if="status.type === 'success'"
+          data-testid="contact-success"
+          role="status"
+          aria-live="polite"
+          class="alert alert-success py-2 mb-2"
+        >
+          {{ status.message || 'Message sent! We’ll get back to you shortly.' }}
+        </div>
       <div v-else-if="status.type === 'error'" class="alert alert-danger py-2 mb-2">
         {{ status.message }}
       </div>
@@ -103,19 +109,18 @@
 </template>
 
 <script setup lang="ts">
-import { useContactForm } from '@/composables/useContactForm';
+  import { useContactForm } from '@/composables/useContactForm';
 
-const {
-    formEl,
-    fieldSr,
-    submitting,
-    status,
-    invalidFields,
-    contactNumber,
-    touch,
-    onInvalid,
-    onSubmit,
-  } = useContactForm();
+  const {
+      formEl,
+      submitting,
+      status,
+      invalidFields,
+      contactNumber,
+      touch,
+      onInvalid,
+      onSubmit,
+    } = useContactForm();
 </script>
 
 <style scoped>

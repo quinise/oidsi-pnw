@@ -3,7 +3,7 @@
     <div class="container text-center">
 
       <!-- Intro -->
-      <h1 class="display-6 fw-semibold gradient-title mt-5 mb-3">
+      <h1 data-testid="gallery-title" class="display-6 fw-semibold gradient-title mt-5 mb-3">
         A nifẹ lati pin àwọn àkókò tí ó dára
       </h1>
       <h2 class="h5 text-black mb-4">We love to share good times</h2>
@@ -94,16 +94,16 @@
 <script setup lang="ts">
 import { useCarouselFocus } from '@/composables/useCarouselFocus'; // keep your focus util
 
-import img10 from '@/assets/images/ancestor-offering.jpeg'
-import img9 from '@/assets/images/cookout-crowd4.jpeg'
-import img1 from '@/assets/images/gallery/3-women.png'
-import img2 from '@/assets/images/gallery/cookout5.png'
-import img3 from '@/assets/images/gallery/kim-omi-posing-white.png'
-import img7 from '@/assets/images/gallery/making-omieros.png'
-import img5 from '@/assets/images/gallery/omi-and-khepra-green.png'
-import img4 from '@/assets/images/gallery/omi-fasanmi-green.png'
-import img6 from '@/assets/images/gallery/omiero-base.png'
-import img8 from '@/assets/images/ile-at-conference.png'
+import img10 from '@/assets/images/ancestor-offering.jpeg';
+import img9 from '@/assets/images/cookout-crowd4.jpeg';
+import img1 from '@/assets/images/gallery/3-women.png';
+import img2 from '@/assets/images/gallery/cookout5.png';
+import img3 from '@/assets/images/gallery/kim-omi-posing-white.png';
+import img7 from '@/assets/images/gallery/making-omieros.png';
+import img5 from '@/assets/images/gallery/omi-and-khepra-green.png';
+import img4 from '@/assets/images/gallery/omi-fasanmi-green.png';
+import img6 from '@/assets/images/gallery/omiero-base.png';
+import img8 from '@/assets/images/ile-at-conference.png';
 
 const slides = [
   { src: img1,  alt: 'Three IFA priestesses smiling at sunset.' },

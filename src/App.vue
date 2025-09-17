@@ -8,7 +8,7 @@ import { RouterLink } from 'vue-router';
   <div id="route-change-live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
   <header>
-    <NavBar />
+    <Navbar />
   </header>
 
   <main id="main" tabindex="-1">
@@ -23,12 +23,12 @@ import { RouterLink } from 'vue-router';
 </template>
 
 <script>
-  import NavBar from './components/partials/NavBar.vue';
-  import Footer from './components/partials/footer.vue';
+  import Navbar from './views/partials/Navbar.vue';
+  import Footer from './views/partials/Footer.vue';
 
 export default {
   components: {
-    NavBar,
+    Navbar,
     Footer
   }
 }

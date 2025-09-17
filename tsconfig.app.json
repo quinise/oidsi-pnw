@@ -4,6 +4,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["vite/client"]
-  }
+    "types": ["vitest/globals", "vite/client"]
+  },
+    "include": ["src", "tests", "env.d.ts"]
 }

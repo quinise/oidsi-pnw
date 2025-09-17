@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HomeView from '@/components/HomeView.vue'
-import AboutView from '@/components/AboutView.vue'
-import EventsView from '@/components/EventsView.vue'
-import ServicesView from '@/components/ServicesView.vue'
-import ContactView from '@/components/ContactView.vue'
-import GalleryView from '@/components/GalleryView.vue'
+import HomeView from '@/views/home.vue'
+import AboutView from '@/views/about.vue'
+import EventsView from '@/views/events.vue'
+import ServicesView from '@/views/services.vue'
+import ContactView from '@/views/contact.vue'
+import GalleryView from '@/views/gallery.vue'
 
 const routes = [
   {
