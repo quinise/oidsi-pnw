@@ -1,6 +1,6 @@
 // tests/unit/Navbar.spec.ts
 import { render, screen, fireEvent } from '@testing-library/vue'
-import Navbar from '@/components/partials/Navbar.vue' // adjust path
+import Navbar from '@/views/partials/Navbar.vue' // adjust path
 
 describe('Navbar', () => {
   it('has proper a11y landmarks and brand link', () => {

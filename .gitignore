@@ -40,8 +40,6 @@ build/Release
 # Dependency directories
 node_modules/
 
-package-lock.json
-
 # Build outputs
 dist/
 
@@ -64,9 +62,3 @@ dist/
 .env
 .env.*
 *.local
-
-# Playwright
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/

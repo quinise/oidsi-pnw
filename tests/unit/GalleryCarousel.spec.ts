@@ -1,6 +1,6 @@
 // tests/unit/GalleryCarousel.spec.ts
 import { render, screen } from '@testing-library/vue'
-import GalleryCarousel from '@/components/GalleryCarousel.vue'
+import GalleryCarousel from '@/views/GalleryCarousel.vue'
 
 it('sets Bootstrap carousel options explicitly to avoid type warnings', async () => {
   render(GalleryCarousel, {
