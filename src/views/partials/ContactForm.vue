@@ -18,9 +18,15 @@
         >
           {{ status.message || 'Message sent! We’ll get back to you shortly.' }}
         </div>
-      <div v-else-if="status.type === 'error'" class="alert alert-danger py-2 mb-2">
-        {{ status.message }}
-      </div>
+      <div
+  v-else-if="status.type === 'error'"
+  role="alert"
+  aria-live="polite"
+  data-testid="contact-error"
+  class="alert alert-danger py-2 mb-2"
+>
+  {{ status.message || 'Please fix the highlighted fields.' }}
+</div>
     </div>
 
     <!-- Hidden fields -->
