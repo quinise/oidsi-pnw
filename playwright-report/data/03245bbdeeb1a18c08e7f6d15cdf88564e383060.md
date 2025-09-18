@@ -1,0 +1,47 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - link "Skip to main content" [ref=e3] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=e4]: Contact • Ile Iwori-Bogbe
+  - banner:
+    - navigation "Primary navigation" [ref=e5]:
+      - generic [ref=e6]:
+        - link "Home link" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Ile Iwori-Bogbe logo" [ref=e8] [cursor=pointer]
+          - generic [ref=e9] [cursor=pointer]: Ile Iwori-Bogbe
+        - button "Toggle navigation menu" [ref=e10] [cursor=pointer]
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - heading "Contact Seattle O.I.D.S.I." [level=1] [ref=e15]
+      - heading "Send Us an Email" [level=2] [ref=e16]
+      - generic [ref=e21]:
+        - generic [ref=e23]: Please fix the highlighted fields.
+        - generic [ref=e24]:
+          - generic [ref=e25]: Name
+          - textbox "Name" [ref=e26]
+          - alert [ref=e27]: Please enter your name.
+        - generic [ref=e28]:
+          - generic [ref=e29]: Email
+          - textbox "Email" [ref=e30]
+          - generic [ref=e31]: We’ll only use this to reply.
+          - alert [ref=e32]: Please enter a valid email address.
+        - generic [ref=e33]:
+          - generic [ref=e34]: Message
+          - textbox "Message" [ref=e35]
+          - alert [ref=e36]: Please include a brief message.
+        - button "Send" [ref=e38] [cursor=pointer]
+      - link "Call or text, phone number 3 4 7, 8 4 1, 6 0 8 7" [ref=e41] [cursor=pointer]:
+        - /url: tel:+13478416087
+        - text: Call or Text (347) 841-6087
+  - contentinfo [ref=e42]:
+    - contentinfo [ref=e43]:
+      - paragraph [ref=e45]:
+        - text: Created by
+        - link "Link to developer's website" [ref=e46] [cursor=pointer]:
+          - /url: https://quinise.ercolano.com/
+          - text: Quinise
+          - generic [ref=e47] [cursor=pointer]: (opens in a new tab)
+```
