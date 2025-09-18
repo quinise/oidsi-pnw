@@ -12,7 +12,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "useDefineForClassFields": true
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-  import ContactForm from '@/components/partials/ContactForm.vue';
+  import ContactForm from '@/views/partials/ContactForm.vue';
 </script>
 
 <style scoped>
