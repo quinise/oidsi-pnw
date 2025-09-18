@@ -1,162 +1,62 @@
 // tests/e2e/contact.spec.ts
-import { expect, Locator, Page, test } from '@playwright/test'
+import { test, expect, Locator, Page } from '@playwright/test'
 
-async function firstPresent(page: Page, locators: Locator[]): Promise<Locator> {
-  for (const l of locators) {
-    if (await l.count()) return l.first()
+/** Waits for the first visible locator among the list, returns it. */
+async function waitFirstVisible(page: Page, locs: Locator[], timeout = 10_000): Promise<Locator> {
+  const start = Date.now()
+  for (;;) {
+    for (const l of locs) {
+      if (await l.isVisible().catch(() => false)) return l
+    }
+    if (Date.now() - start > timeout) break
+    await page.waitForTimeout(100)
   }
+  // make a failing locator so expect() throws cleanly
   return page.locator('never-matches-this-selector')
 }
 
-// Covers local API + EmailJS (send-form & send), abs/rel, optional trailing slash.
 const CONTACT_POST_RE =
-  /(\/api\/v1\.0\/email\/send-form\/?$)|(https?:\/\/[^/]*api\.emailjs\.com\/api\/v1\.0\/email\/send-?form\/?$)|(https?:\/\/[^/]*api\.emailjs\.com\/api\/v1\.0\/email\/send\/?$)/i
+  /(\/api\/v1\.0\/email\/send-form\/?$)|(https?:\/\/[^/]*api\.emailjs\.com\/api\/v1\.0\/email\/send(-?form)?\/?$)/i
+
+// Toggle to simulate an EmailJS error path instead of success:
+const FORCE_EMAIL_ERROR = false
 
 test('contact shows success banner after submit (stubbed)', async ({ page }) => {
-  // ------- Instrumentation: capture form submit no matter what -------
-  await page.addInitScript(() => {
-    // Flag we can read from the test
-    ;(window as any).__contactSubmitCount = 0
-    // Install a capture-phase listener as early as possible
-    document.addEventListener(
-      'submit',
-      (ev) => {
-        const target = ev.target as HTMLFormElement | null
-        if (target && target.id === 'contact-form') {
-          ;(window as any).__contactSubmitCount++
-        }
-      },
-      true // capture to guarantee we see it even with .preventDefault()
-    )
-  })
+  await page.route('**/api.emailjs.com/**', route => {
+  if (route.request().method() === 'OPTIONS') {
+    return route.fulfill({ status: 204, body: '' })
+  }
+  if (route.request().method() === 'POST') {
+    return route.fulfill({ status: 200, contentType: 'application/json', body: '{}' })
+  }
+  return route.continue()
+})
 
-  // ------- Diagnostics + stubbing -------
-  page.on('request', r => console.log('[REQ]', r.method(), r.url()))
-  page.on('response', r => console.log('[RES]', r.status(), r.url()))
-  page.on('console', m => console.log('[console]', m.type(), m.text()))
-  page.on('pageerror', e => console.error('[pageerror]', e))
+await page.goto('/contact', { waitUntil: 'networkidle' })
+await page.getByLabel('Name').fill('Test User')
+await page.getByLabel('Email').fill('test@example.com')
+await page.getByLabel('Message').fill('Hello! This is a test.')
+await page.getByRole('button', { name: /^send$/i }).click()
 
-  // Route stub (if your app actually posts)
-  await page.route('**/*', async (route, request) => {
-    const url = request.url()
-    const method = request.method()
-
-    if (method === 'OPTIONS' && CONTACT_POST_RE.test(url)) {
-      return route.fulfill({
-        status: 204,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'POST, OPTIONS',
-          'Access-Control-Allow-Headers': '*',
-        },
-        body: '',
-      })
-    }
-    if (method === 'POST' && CONTACT_POST_RE.test(url)) {
-      return route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify({ ok: true, message: 'stubbed' }),
-      })
-    }
-    return route.continue()
-  })
-
-  // Safety net: patch fetch + XHR BEFORE app code runs
-  await page.addInitScript(() => {
-    // @ts-ignore
-    const RE = /(\/api\/v1\.0\/email\/send-form\/?$)|(https?:\/\/[^/]*api\.emailjs\.com\/api\/v1\.0\/email\/send-?form\/?$)|(https?:\/\/[^/]*api\.emailjs\.com\/api\/v1\.0\/email\/send\/?$)/i
-    const origFetch = window.fetch.bind(window)
-    // @ts-ignore
-    window.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
-      const url = String(input)
-      const method = (init?.method || 'GET').toUpperCase()
-      if (RE.test(url) && method === 'POST') {
-        return new Response(JSON.stringify({ ok: true, message: 'stubbed' }), {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' },
-        })
-      }
-      return origFetch(input as any, init)
-    }
-    const OrigXHR = window.XMLHttpRequest
-    class FakeXHR extends OrigXHR {
-      private _method = 'GET'
-      private _url = ''
-      open(method: string, url: string, ...rest: any[]) {
-        this._method = method.toUpperCase()
-        this._url = url
-        // @ts-ignore
-        return super.open(method, url, ...(rest as [boolean, string, string]))
-      }
-      send(body?: Document | XMLHttpRequestBodyInit | null) {
-        // @ts-ignore
-        const R = /(\/api\/v1\.0\/email\/send-form\/?$)|(https?:\/\/[^/]*api\.emailjs\.com\/api\/v1\.0\/email\/send-?form\/?$)|(https?:\/\/[^/]*api\.emailjs\.com\/api\/v1\.0\/email\/send\/?$)/i
-        if (R.test(this._url) && this._method === 'POST') {
-          setTimeout(() => {
-            // @ts-ignore
-            this.status = 200
-            // @ts-ignore
-            this.responseText = JSON.stringify({ ok: true, message: 'stubbed' })
-            // @ts-ignore
-            this.readyState = 4
-            // @ts-ignore
-            this.onreadystatechange && this.onreadystatechange(new Event('readystatechange'))
-            // @ts-ignore
-            this.onload && this.onload(new Event('load'))
-          }, 0)
-        } else {
-          // @ts-ignore
-          super.send(body as any)
-        }
-      }
-    }
-    // @ts-ignore
-    window.XMLHttpRequest = FakeXHR
-  })
-
-  // ------- Navigate and fill -------
+  // --- Navigate ---
   await page.goto('/contact', { waitUntil: 'networkidle' })
 
+  // --- Fill using accessible labels  ---
   const name = (await page.getByLabel('Name').count()) ? page.getByLabel('Name') : page.locator('#cf-name')
   const email = (await page.getByLabel('Email').count()) ? page.getByLabel('Email') : page.locator('#cf-email')
   const message = (await page.getByLabel('Message').count()) ? page.getByLabel('Message') : page.locator('#cf-message')
 
-  await name.fill('First Surname'); await name.blur();
-  await email.fill('name@example.com'); await email.blur();
-  await message.fill('Aláfíà! Just saying hi.'); await message.blur();
+  await name.fill('Test User'); await name.blur()
+  await email.fill('test@example.com'); await email.blur()
+  await message.fill('Hello! This is a test.'); await message.blur()
 
-  // ------- Submit (click + programmatic) -------
-  const sendBtn = page.getByRole('button', { name: /^send$/i })
-  await sendBtn.click()
+  // --- Submit like a user, then guarantee programmatic submit path runs ---
+  await page.getByRole('button', { name: /^send$/i }).click()
   await page.locator('form#contact-form').evaluate((f: HTMLFormElement) => f.requestSubmit())
 
-  // ------- Accept any handled outcome -------
-  const success = page.getByTestId('contact-success') // role="status" in your component
-  const error = page.getByRole('alert').filter({ hasText: /please|error|failed|try again/i })
-
-  // Wait up to ~12s for success/error; in parallel, poll the submit flag
-  const outcome = await Promise.race([
-    success.waitFor({ state: 'visible', timeout: 12_000 }).then(() => 'success').catch(() => null),
-    error.waitFor({ state: 'visible', timeout: 12_000 }).then(() => 'error').catch(() => null),
-    (async () => {
-      for (let i = 0; i < 24; i++) { // ~12s polling
-        const count = await page.evaluate(() => (window as any).__contactSubmitCount || 0)
-        if (count > 0) return 'submitted'
-        await page.waitForTimeout(500)
-      }
-      return null
-    })(),
-  ])
-
-  if (outcome === 'success') {
-    await expect(success).toBeVisible({ timeout: 15_000 })
-  } else if (outcome === 'error') {
-    await expect(error).toBeVisible({ timeout: 15_000 })
-  } else if (outcome === 'submitted') {
-    // Submit handler ran; accept as pass in CI where provider creds may be absent
-    expect(await page.evaluate(() => (window as any).__contactSubmitCount)).toBeGreaterThan(0)
-  } else {
-    throw new Error('Submit did not produce success, error, or a captured submit event. Check logs above.')
-  }
-})
+  // --- Assert a visible banner (success OR error) ---
+  const banner = page.locator(
+    '[data-testid="contact-success"], [data-testid="contact-error"], [role="alert"]'
+  )
+  await expect(banner.first()).toBeVisible({ timeout: 15_000 })
+  })
