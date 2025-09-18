@@ -1,33 +1,34 @@
 /* ----------------------------------------------------
-  OIDSI-PNW Bootstrap Theme (Sass)
+  OIDSI-PNW Bootstrap Theme (Sass, legacy @import to unblock)
+  Note: Bootstrap 5.x still uses internal @import; @use + with
+  against 'variables' causes undefined mixin errors.
 -----------------------------------------------------*/
 
+/* Project fonts via CSS custom props (kept) */
 :root {
   --heading-font: 'Hammersmith One', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --body-font: 'Gudea', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-
-  --navy: #000080;
-  --gray: #808080;
-  --green: #4CAF50;
+  --navy: #000080; --gray: #808080; --green: #4CAF50;
 }
 
-html, body {
-  font-family: var(--body-font);
-}
+html, body { font-family: var(--body-font); }
+h1, h2, h3, h4, h5, h6, .brand-text { font-family: var(--heading-font); }
 
-h1, h2, h3, h4, h5, h6,
-.brand-text {
-  font-family: var(--heading-font);
-}
-
-$primary:   #000080;  // Navy
-$success:   #2e7d32;  // Highlight green
-$gray-600:  #808080;  // Mid gray
+/* --- Bootstrap variable overrides must come BEFORE bootstrap import --- */
+$primary:   #000080;   // Navy
+$success:   #2e7d32;   // Highlight green
+$gray-600:  #808080;   // Mid gray
 $white:     #ffffff;
 $black:     #0b172a;
 
 $body-bg:    $white;
 $body-color: $black;
+
+$link-color: $primary;
+$link-hover-decoration: underline;
+$focus-ring-color: rgba($primary, .35);
+$btn-focus-width: .2rem;
+$enable-transitions: true;
 
 $theme-colors: (
   "primary":   $primary,
@@ -38,41 +39,29 @@ $theme-colors: (
   "danger":    #dc2626,
   "light":     #f8f9fa,
   "dark":      #111827,
-
   "highlight": $success
 );
 
-$link-color: $primary;
-$link-hover-decoration: underline;
-$focus-ring-color: rgba($primary, .35);
-$btn-focus-width: .2rem;
-
-/* Reduced motion respect */
-$enable-transitions: true;
-
+/* --- Bootstrap (legacy @import) --- */
 @import "bootstrap/scss/bootstrap";
 
+/* --- Your utilities/components --- */
 h1.gradient-title {
   background: linear-gradient(to bottom, #000080 30%, #4CAF50 85%);
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-  color: transparent !important;
-
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent !important;
   display: inline-block;
 }
 
 .sr-only {
-  position: absolute !important;
-  width: 1px; height: 1px;
+  position: absolute !important; width: 1px; height: 1px;
   padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
 .skip-link {
-  position: absolute; left: 0; top: 0;
-  transform: translateY(-200%); background: $white; color: $black;
-  padding: .5rem .75rem; border: 2px solid $black; z-index: 1000;
+  position: absolute; left: 0; top: 0; transform: translateY(-200%);
+  background: $white; color: $black; padding: .5rem .75rem;
+  border: 2px solid $black; z-index: 1000;
 }
 .skip-link:focus { transform: translateY(0); }

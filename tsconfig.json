@@ -12,6 +12,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
+    "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
