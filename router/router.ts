@@ -1,42 +1,40 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HomeView from '@/views/home.vue'
-import AboutView from '@/views/about.vue'
-import EventsView from '@/views/events.vue'
-import ServicesView from '@/views/services.vue'
-import ContactView from '@/views/contact.vue'
-import GalleryView from '@/views/gallery.vue'
-
 const routes = [
   {
     path: '/',
-    component: HomeView,
+    name: 'Home',
+    component: () => import('@/views/Home.vue'),
     meta: { title: 'Home • Ile Iwori-Bogbe' }
   },
   {
     path: '/about',
-    component: AboutView,
+    name: 'About',
+    component: () => import('@/views/About.vue'),
     meta: { title: 'About • Ile Iwori-Bogbe' }
   },
   {
     path: '/events',
-    component: EventsView,
+    name: 'Events',
+    component: () => import('@/views/Events.vue'),
     meta: { title: 'Events • Ile Iwori-Bogbe' }
   },
   {
     path: '/services',
-    component: ServicesView,
+    name: 'Services',
+    component: () => import('@/views/Services.vue'),
     meta: { title: 'Services • Ile Iwori-Bogbe' }
   },
   {
     path: '/contact',
-    component: ContactView,
+    name: 'Contact',
+    component: () => import('@/views/Contact.vue'),
     meta: { title: 'Contact • Ile Iwori-Bogbe' }
   },
   {
     path: '/gallery',
-    name: 'gallery',
-    component: GalleryView,
+    name: 'Gallery',
+    component: () => import('@/views/Gallery.vue'),
     meta: { title: 'Gallery • Ile Iwori-Bogbe' }
   }
 ]

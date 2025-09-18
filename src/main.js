@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './styles/theme.scss';
 import 'bootstrap';
 import { createApp, nextTick } from 'vue'
-import router from '../router.ts'
+import router from '../router/router.ts'
 import App from '/src/App.vue'
 import '@/assets/reduced-motion.css'
 
