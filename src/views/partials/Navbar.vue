@@ -17,7 +17,7 @@
             height="36"
             class="me-2"
           />
-          <span class="fw-bold brand-text">Ile Iwori-Bogbe</span>
+          <span class="brand-text">Ile Iwori-Bogbe</span>
         </a>
       </RouterLink>
 
@@ -64,7 +64,7 @@
 
 <script setup lang="ts">
   import { useNavbarA11y } from '@/composables/useNavbarA11y';
-  import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router';
 
   const router = useRouter()
   const { isOpen, navToggler, navMenu, hideForMobile, toggle } = useNavbarA11y('navbarSupportedContent')
@@ -87,13 +87,34 @@
     font-family: 'Hammersmith One', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   }
 
-  .navbar-brand .brand-text {
-    color: #000080;
+  .brand-text{
+    font-family: "Hammersmith One", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    font-synthesis: none;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
   }
+
+  .navbar .fw-bold,
+  .navbar .fw-semibold { font-weight: 400 !important; }
+
+  .navbar,
+  .navbar * {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .navbar-brand { min-width: 0; }
+  .brand-text { white-space: nowrap; }
+
+  .brand-text { color: #000080; }
 
   .nav-link {
     color: #000080 !important;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .nav-link:hover,

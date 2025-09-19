@@ -1,10 +1,7 @@
 /* ----------------------------------------------------
-  OIDSI-PNW Bootstrap Theme (Sass, legacy @import to unblock)
-  Note: Bootstrap 5.x still uses internal @import; @use + with
-  against 'variables' causes undefined mixin errors.
+  OIDSI-PNW Bootstrap Theme
 -----------------------------------------------------*/
 
-/* Project fonts via CSS custom props (kept) */
 :root {
   --heading-font: 'Hammersmith One', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --body-font: 'Gudea', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -14,7 +11,6 @@
 html, body { font-family: var(--body-font); }
 h1, h2, h3, h4, h5, h6, .brand-text { font-family: var(--heading-font); }
 
-/* --- Bootstrap variable overrides must come BEFORE bootstrap import --- */
 $primary:   #000080;   // Navy
 $success:   #2e7d32;   // Highlight green
 $gray-600:  #808080;   // Mid gray
@@ -42,15 +38,25 @@ $theme-colors: (
   "highlight": $success
 );
 
-/* --- Bootstrap (legacy @import) --- */
+/* --- Bootstrap --- */
 @import "bootstrap/scss/bootstrap";
 
-/* --- Your utilities/components --- */
 h1.gradient-title {
   background: linear-gradient(to bottom, #000080 30%, #4CAF50 85%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent !important;
   display: inline-block;
+
+  /* anti-clipping helpers */
+  line-height: 1.15;
+  padding-bottom: 0.08em;
+  overflow: visible;
+}
+
+/* Smaller screens */
+@media (max-width: 480px) {
+  .curved-title svg { width: min(94vw, 520px); }
+  .curved-title text { font-size: 7px; }
 }
 
 .sr-only {

@@ -2,33 +2,12 @@
   <section class="bg-light py-5">
     <div class="container text-center">
 
-      <!-- Curved title -->
-      <div class="row justify-content-center my-5">
-        <div class="col-12">
-          <svg
-            class="services-svg d-block mx-auto"
-            viewBox="0 0 30 2.85"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Services"
-          >
-            <defs>
-              <linearGradient id="servicesGradient" x1="0%" y1="15%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#000080;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#4CAF50;stop-opacity:1" />
-              </linearGradient>
-            </defs>
-            <path id="servicesTitlePath" fill="none" d="M 0 6 Q 14 -5 30 5" pathLength="2" />
-            <text font-size="2.75" dominant-baseline="hanging" text-anchor="middle">
-              <textPath href="#servicesTitlePath" startOffset="1" fill="url(#servicesGradient)">
-                Services
-              </textPath>
-            </text>
-          </svg>
-        </div>
-      </div>
+      <!-- Title -->
+      <h1 class="display-6 fw-semibold gradient-title mt-5">
+        Services
+      </h1>
 
-      <!-- Hero image -->
+      <!-- Offering image -->
       <div class="row justify-content-center mt-4">
         <div class="col-12">
           <img
@@ -137,19 +116,14 @@
 </template>
 
 <script setup lang="ts">
-  import offeringImg from '@/assets/images/yemoja-offering.png'
+  import offeringImg from '@/assets/images/yemoja-offering.png';
 </script>
 
 <style scoped>
-  .services-svg {
-    max-width: 720px;
-    height: auto;
-  }
-
   .offering-img {
     border: none !important;
     box-shadow: none;
-    max-width: 280px; /* smaller than before */
+    max-width: 280px;
     width: 100%;
     height: auto;
   }
@@ -158,7 +132,7 @@
   h2, h3 {
     font-family: var(--heading-font);
   }
-  
+
   .list-group-item p {
     font-family: var(--body-font);
     line-height: 1.6;

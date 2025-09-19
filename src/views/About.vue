@@ -2,31 +2,10 @@
   <section class="bg-light py-5">
     <div class="container text-center">
 
-      <!-- Curved title -->
-      <div class="row justify-content-center mt-5">
-        <div class="col-12">
-          <svg
-            class="about-svg d-block mx-auto"
-            viewBox="0 0 30 4"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="We Are Ile Iwori-Bogbe"
-          >
-            <defs>
-              <linearGradient id="aboutGradient" x1="0%" y1="15%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#000080;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#4CAF50;stop-opacity:1" />
-              </linearGradient>
-            </defs>
-            <path id="aboutTitlePath" fill="none" d="M 0 5 Q 15 -5 30 5" pathLength="2" />
-            <text font-size="1.5" dominant-baseline="hanging" text-anchor="middle">
-              <textPath href="#aboutTitlePath" startOffset="1" fill="url(#aboutGradient)">
-                We Are Ile Iwori-Bogbe
-              </textPath>
-            </text>
-          </svg>
-        </div>
-      </div>
+      <!-- Title -->
+      <h1 class="display-6 fw-semibold gradient-title mt-5 h-100">
+        We Are Ile Iwori-Bogbe
+      </h1>
 
       <!-- Content -->
       <div id="about-section" class="row justify-content-center mt-1 text-start">
@@ -55,27 +34,17 @@
 </script>
 
 <style scoped>
-  /* Keep the title SVG nicely sized */
-  .about-svg {
-    max-width: 720px;
-    height: auto;
-  }
-
-  /* Borderless, responsive image; cap width for balance */
   .about-img {
     border: none !important;
     box-shadow: none;
-    max-width: 720px; /* adjust to taste */
+    max-width: 720px;
   }
 
-  .about-svg text {
-    font-family: var(--heading-font);
-  }
   .about-paragraph {
-    max-width: 720px;                /* limit width for readability */
-    margin: 0 auto;                  /* center in container */
-    background-color: rgba(0, 0, 128, 0.15); /* navy with transparency */
-    color: #000000;                  /* light text (Bootstrap’s “light”) */
+    max-width: 720px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 128, 0.15);
+    color: #000000;
     padding: 1.5rem;
     border-radius: .5rem;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
