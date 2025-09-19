@@ -5,6 +5,7 @@
 [![Firebase Hosting](https://img.shields.io/badge/firebase-hosting-orange?logo=firebase)](https://firebase.google.com/docs/hosting)
 [![EmailJS](https://img.shields.io/badge/emailjs-integrated-yellow)](https://www.emailjs.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
+[![Build](https://img.shields.io/badge/build-passing-brightgreen)]([https://docs.github.com/en/actions/managing-workflow-runs/adding-a-workflow-status-badge](https://github.com/quinise/oidsi-pnw/actions/runs/17871061625/job/50824584202))  
 
 <br/>
 <p align="center">
