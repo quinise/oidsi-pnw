@@ -1,10 +1,10 @@
 # OIDSI-PNW Website
 
-[![Vue.js](https://img.shields.io/badge/vue-3-green?logo=vue.js)]()
-[![Bootstrap](https://img.shields.io/badge/bootstrap-5-563d7c?logo=bootstrap&logoColor=white)]()
-[![Firebase Hosting](https://img.shields.io/badge/firebase-hosting-orange?logo=firebase)]()
+[![Vue.js](https://img.shields.io/badge/vue-3-green?logo=vue.js)](https://vuejs.org/)
+[![Bootstrap](https://img.shields.io/badge/bootstrap-5-563d7c?logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+[![Firebase Hosting](https://img.shields.io/badge/firebase-hosting-orange?logo=firebase)](https://firebase.google.com/docs/hosting)
 [![EmailJS](https://img.shields.io/badge/emailjs-integrated-yellow)](https://www.emailjs.com/)
-[![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/license/mit)
+[![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 
 <br/>
 <p align="center">
