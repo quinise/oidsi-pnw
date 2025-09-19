@@ -4,7 +4,7 @@
 [![Bootstrap](https://img.shields.io/badge/bootstrap-5-563d7c?logo=bootstrap&logoColor=white)]()
 [![Firebase Hosting](https://img.shields.io/badge/firebase-hosting-orange?logo=firebase)]()
 [![EmailJS](https://img.shields.io/badge/emailjs-integrated-yellow)](https://www.emailjs.com/)
-[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue)]([LICENSE](https://opensource.org/license/mit))
 
 <br/>
 <p align="center">
@@ -34,7 +34,7 @@ The OIDSI-PNW (Seattle Chapter, Ile Iwore-Bogbe) website provides information ab
 ### Hosting / Services
 
 - Firebase (Hosting)
-- EmailJS (form handling & event creation)
+- EmailJS (form handling)
 
 ## 🚀 Getting Started
 
@@ -47,12 +47,35 @@ npm install
 npm run dev
 ```
 
-## 🔧 Customize configuration
+## 🔧 Configuration
 
-1. Create an EmailJS account [`here`](https://www.emailjs.com/) and generate a public key
-2. Create a `.env` file in the root directory of the project and add a variable `VITE_EMAILJS_PUBLIC_KEY = PUBLICKEY`
-3. Deploy to Firebase Hosting.
+1. Create an EmailJS account [`here`](https://www.emailjs.com/) and generate:
+- Public Key
+- Template ID
+- Service ID
+
+2. Create a `.env.local` file in the root directory and add:
+
+```ini
+VITE_EMAILJS_PUBLIC_KEY = PUBLIC_KEY
+VITE_EMAILJS_TEMPLATE_ID = TEMPLATE_ID
+VITE_EMAILJS_SERVICE_ID = SERVICE_ID
+```
+3. Build and Deploy with Firebase:
+
+```bash
+npm run build
+firebase deploy --only hosting
+```
+
+## 🧪 Testing
+
+Run end-to-end tests:
+
+```bash
+npm run test:e2e
+```
 
 ## 📜 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See [LICENSE](https://opensource.org/license/mit) for details.
