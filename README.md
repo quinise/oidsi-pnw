@@ -4,7 +4,7 @@
 [![Bootstrap](https://img.shields.io/badge/bootstrap-5-563d7c?logo=bootstrap&logoColor=white)]()
 [![Firebase Hosting](https://img.shields.io/badge/firebase-hosting-orange?logo=firebase)]()
 [![EmailJS](https://img.shields.io/badge/emailjs-integrated-yellow)](https://www.emailjs.com/)
-[![License](https://img.shields.io/badge/license-MIT-blue)]([LICENSE](https://opensource.org/license/mit))
+[![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/license/mit)
 
 <br/>
 <p align="center">
