@@ -2,7 +2,8 @@
 
 [![Vue.js](https://img.shields.io/badge/vue-3-green?logo=vue.js)]()
 [![Bootstrap](https://img.shields.io/badge/bootstrap-5-563d7c?logo=bootstrap&logoColor=white)]()
-[![Firebase Hosting](https://img.shields.io/badge/firebase-hosting-orange?logo=firebase)]()
+[![Amazon S3](https://img.shields.io/badge/AWS-S3-232F3E?logo=amazonaws&logoColor=white)](https://aws.amazon.com/s3/)
+[![CloudFront](https://img.shields.io/badge/AWS-CloudFront-232F3E?logo=amazonaws&logoColor=white)](https://aws.amazon.com/cloudfront/)
 [![EmailJS](https://img.shields.io/badge/emailjs-integrated-yellow)](https://www.emailjs.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue)]([LICENSE](https://opensource.org/license/mit))
 
@@ -11,7 +12,7 @@
   <img src="/src/assets/images/OIDSIFav.ico" alt="Iwori Bogbe logo" width="150"/><br/>
 </p><br/>
 
-The OIDSI-PNW (Seattle Chapter, Ile Iwore-Bogbe) website provides information about chapter events and community activities. Built with Vue.js and Firebase, it features a custom design, a contact form for outreach, and integrated Google Calendar for event tracking.
+The OIDSI-PNW (Seattle Chapter, Ile Iwore-Bogbe) website provides information about chapter events and community activities. Built with Vue.js and AWS, it features a custom design, a contact form for outreach, and integrated Google Calendar for event tracking.
 
 🌐 **Live Site:** [oidsi-pnw.web.app](https://oidsi-pnw.web.app)
 
@@ -22,7 +23,7 @@ The OIDSI-PNW (Seattle Chapter, Ile Iwore-Bogbe) website provides information ab
 - **Custom Graphics & Branding** – A tailored design to represent OIDSI-PNW.
 - **Photo Gallery** – Highlights past events.
 - **Responsive Layout** – Works smoothly across devices.
-- **Firebase Hosting** – Fast, reliable, and secure deployment.
+- **AWS S3 + CloudFront** – Fast, global, secure static site delivery.
 
 ## 🛠️ Tech Stack
 
@@ -33,7 +34,7 @@ The OIDSI-PNW (Seattle Chapter, Ile Iwore-Bogbe) website provides information ab
 
 ### Hosting / Services
 
-- Firebase (Hosting)
+- AWS (S3, CloudFront)
 - EmailJS (form handling)
 
 ## 🚀 Getting Started
@@ -60,12 +61,6 @@ npm run dev
 VITE_EMAILJS_PUBLIC_KEY = PUBLIC_KEY
 VITE_EMAILJS_TEMPLATE_ID = TEMPLATE_ID
 VITE_EMAILJS_SERVICE_ID = SERVICE_ID
-```
-3. Build and Deploy with Firebase:
-
-```bash
-npm run build
-firebase deploy --only hosting
 ```
 
 ## 🧪 Testing
