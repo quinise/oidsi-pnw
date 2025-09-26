@@ -36,7 +36,13 @@ const routes = [
     name: 'Gallery',
     component: () => import('@/views/Gallery.vue'),
     meta: { title: 'Gallery • Ile Iwori-Bogbe' }
-  }
+  },
+  {
+    path: '/:pathMatch(.*)*', 
+    name: 'NotFound', 
+    component: () => import('@/views/NotFound.vue'),
+    meta: { title: 'Page Not Found • Ile Iwori-Bogbe' }
+  },
 ]
 
 const router = createRouter({
