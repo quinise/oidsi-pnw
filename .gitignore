@@ -62,3 +62,4 @@ dist/
 .env
 .env.*
 *.local
+aws-vars.sh

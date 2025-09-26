@@ -1,6 +1,6 @@
 // src/composables/useContactForm.ts
-import { ref, reactive } from 'vue'
 import emailjs from '@emailjs/browser'
+import { reactive, ref } from 'vue'
 
 export function useContactForm() {
   const formEl = ref<HTMLFormElement | null>(null)
@@ -14,7 +14,6 @@ export function useContactForm() {
     message: false,
   })
 
-  // Used by EmailJS templates as a tracking number
   const contactNumber = Math.floor(Math.random() * 1_000_000)
     .toString()
     .padStart(6, '0')
@@ -48,7 +47,6 @@ export function useContactForm() {
     touch('name')
     touch('email')
     touch('message')
-    // Ensure a global, visible error banner appears
     status.value = { type: 'error', message: 'Please fix the highlighted fields.' }
   }
 
@@ -71,7 +69,6 @@ export function useContactForm() {
       return
     }
 
-    // Native validity gate
     if (!form.checkValidity()) {
       form.classList.add('was-validated')
       onInvalid()
