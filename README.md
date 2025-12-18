@@ -14,9 +14,9 @@
 
 The OIDSI-PNW (Seattle Chapter, Ile Iwore-Bogbe) website provides information about chapter events and community activities. Built with Vue.js and Firebase, it features a custom design, a contact form for outreach, and integrated Google Calendar for event tracking.
 
-🌐 **Live Site:** [oidsi-pnw.web.app](https://oidsi-pnw.web.app)
+**Live Site:** [oidsi-pnw.web.app](https://oidsi-pnw.web.app)
 
-## ✨ Features
+## Features
 
 - **Contact Form** – Direct communication with chapter organizers.
 - **Google Calendar Integration** – Stay up to date with scheduled events.
@@ -25,7 +25,7 @@ The OIDSI-PNW (Seattle Chapter, Ile Iwore-Bogbe) website provides information ab
 - **Responsive Layout** – Works smoothly across devices.
 - **Firebase Hosting** – Fast, reliable, and secure deployment.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -37,7 +37,7 @@ The OIDSI-PNW (Seattle Chapter, Ile Iwore-Bogbe) website provides information ab
 - Firebase (Hosting)
 - EmailJS (form handling)
 
-## 🚀 Getting Started
+## Getting Started
 
 Clone this repo and install dependencies:
 
@@ -48,7 +48,7 @@ npm install
 npm run dev
 ```
 
-## 🔧 Configuration
+## Configuration
 
 1. Create an EmailJS account [`here`](https://www.emailjs.com/) and generate:
 - Public Key
@@ -69,7 +69,7 @@ npm run build
 firebase deploy --only hosting
 ```
 
-## 🧪 Testing
+## Testing
 
 Run end-to-end tests:
 
@@ -77,6 +77,6 @@ Run end-to-end tests:
 npm run test:e2e
 ```
 
-## 📜 License
+## License
 
 This project is licensed under the MIT License. See [LICENSE](https://opensource.org/license/mit) for details.
