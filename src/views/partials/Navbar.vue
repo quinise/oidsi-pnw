@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg fixed-top custom-navbar" role="navigation" aria-label="Primary navigation">
+  <nav class="navbar navbar-expand-lg custom-navbar" role="navigation" aria-label="Primary navigation">
     <div class="container-fluid">
       <!-- Brand/logo -->
       <RouterLink to="/" custom v-slot="{ href, navigate, isExactActive }">

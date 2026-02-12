@@ -23,8 +23,8 @@ import { RouterLink } from 'vue-router';
 </template>
 
 <script>
-  import Navbar from './views/partials/Navbar.vue';
-  import Footer from './views/partials/Footer.vue';
+  import Footer from '@/views/partials/Footer.vue';
+import Navbar from '@/views/partials/Navbar.vue';
 
 export default {
   components: {

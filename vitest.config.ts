@@ -1,25 +1,16 @@
-import { defineConfig, mergeConfig } from 'vitest/config'
-import viteConfig from './vite.config'
-import vue from '@vitejs/plugin-vue'
-import path from 'node:path'
+import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vitest/config'
 
-export default mergeConfig(viteConfig, defineConfig({
-  plugins: [vue()],
+export default defineConfig({
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+    alias: [
+      { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
+      { find: '@views', replacement: fileURLToPath(new URL('./src/views', import.meta.url)) },
+      { find: '@composables', replacement: fileURLToPath(new URL('./src/composables', import.meta.url)) }
+    ]
   },
-  test: {
-    environment: 'jsdom',
-    globals: true,
-    setupFiles: ['./tests/setupTests.ts'],
-    include: ['tests/unit/**/*.spec.{ts,js,tsx,vue}'],
-    coverage: {
-      provider: 'v8',
-      reporter: ['text', 'lcov'],
-      reportsDirectory: './coverage',
-      exclude: ['**/tests/**', '**/*.d.ts']
-    },
-  },
-}))
+  test: { // TODO: Config wide not being applied
+    include: ['tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
+    environment: 'happy-dom'
+  }
+})

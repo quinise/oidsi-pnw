@@ -63,3 +63,6 @@ dist/
 .env.*
 *.local
 aws-vars.sh
+
+# OS files
+.DS_Store

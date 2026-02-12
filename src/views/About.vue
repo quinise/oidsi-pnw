@@ -4,7 +4,7 @@
 
       <!-- Title -->
       <h1 class="display-6 fw-semibold gradient-title mt-5 h-100">
-        We Are Ile Iwori-Bogbe
+        {{ title }}
       </h1>
 
       <!-- Content -->
@@ -29,8 +29,18 @@
   </section>
 </template>
 
-<script setup lang="ts">
-  import aboutImg from '@/assets/images/ile-pic-1.png';
+<script lang="ts">
+import aboutImg from '@/assets/images/ile-pic-1.png';
+
+export default {
+  name: 'AboutComponent',
+  data() {
+    return {
+      title: 'We Are Ile Iwori-Bogbe',
+      aboutImg
+    }
+  }
+}
 </script>
 
 <style scoped>
