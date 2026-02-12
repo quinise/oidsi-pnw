@@ -2,9 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
-    "types": ["vitest/globals", "vite/client"]
+    "types": ["vite/client"]
   },
     "include": ["src", "tests", "env.d.ts"]
 }

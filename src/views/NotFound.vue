@@ -3,7 +3,7 @@
     <div class="container py-5">
       <div class="mx-auto" style="max-width: 720px;">
         <div class="display-1 fw-bold text-primary">404</div>
-        <h1 class="h2 fw-semibold mt-3">Page not found</h1>
+        <h1 class="h2 fw-semibold mt-3">{{ title }}</h1>
         <p class="text-muted mt-2">
           The page you’re looking for doesn’t exist or may have moved.
         </p>
@@ -17,7 +17,17 @@
   </main>
 </template>
 
-<script setup lang="ts"></script>
+<script lang="ts">
+
+export default {
+  name: 'NotFoundComponent',
+  data() {
+    return {
+      title: 'Page Not Found'
+    }
+  }
+}
+</script>
 
 <style scoped>
   .notfound { min-height: 100dvh; }
