@@ -62,22 +62,36 @@
   </nav>
 </template>
 
-<script setup lang="ts">
-  import { useNavbarA11y } from '@/composables/useNavbarA11y';
+<script lang="ts">
+import { useNavbarA11y } from '@/composables/useNavbarA11y';
 import { useRouter } from 'vue-router';
 
-  const router = useRouter()
-  const { isOpen, navToggler, navMenu, hideForMobile, toggle } = useNavbarA11y('navbarSupportedContent')
-  
-  router.afterEach(() => hideForMobile())
+export default {
+  name: 'NavbarComponent',
+  setup() {
+    const router = useRouter();
+    const { isOpen, navToggler, navMenu, hideForMobile, toggle } = useNavbarA11y('navbarSupportedContent');
+    
+    router.afterEach(() => hideForMobile());
 
-  const navLinks = [
-    { to: '/about', label: 'About' },
-    { to: '/events', label: 'Events' },
-    { to: '/services', label: 'Services' },
-    { to: '/contact', label: 'Contact Us' },
-    { to: '/gallery', label: 'Gallery' }
-  ]
+    const navLinks = [
+      { to: '/about', label: 'About' },
+      { to: '/events', label: 'Events' },
+      { to: '/services', label: 'Services' },
+      { to: '/contact', label: 'Contact Us' },
+      { to: '/gallery', label: 'Gallery' }
+    ];
+
+    return {
+      isOpen,
+      navToggler,
+      navMenu,
+      hideForMobile,
+      toggle,
+      navLinks
+    };
+  }
+};
 </script>
 
 <style scoped>

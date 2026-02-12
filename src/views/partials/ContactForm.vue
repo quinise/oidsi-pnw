@@ -114,10 +114,13 @@
   </form>
 </template>
 
-<script setup lang="ts">
-  import { useContactForm } from '@/composables/useContactForm';
+<script lang="ts">
+import { useContactForm } from '@/composables/useContactForm';
 
-  const {
+export default {
+  name: 'ContactFormComponent',
+  setup() {
+    const {
       formEl,
       submitting,
       status,
@@ -127,6 +130,19 @@
       onInvalid,
       onSubmit,
     } = useContactForm();
+
+    return {
+      formEl,
+      submitting,
+      status,
+      invalidFields,
+      contactNumber,
+      touch,
+      onInvalid,
+      onSubmit,
+    };
+  }
+};
 </script>
 
 <style scoped>
