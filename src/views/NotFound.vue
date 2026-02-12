@@ -5,7 +5,7 @@
         <div class="display-1 fw-bold text-primary">404</div>
         <h1 class="h2 fw-semibold mt-3">{{ title }}</h1>
         <p class="text-muted mt-2">
-          The page you’re looking for doesn’t exist or may have moved.
+          {{ pageNotFoundMessage }}
         </p>
 
         <div class="d-flex gap-3 justify-content-center mt-4">
@@ -23,7 +23,8 @@ export default {
   name: 'NotFoundComponent',
   data() {
     return {
-      title: 'Page Not Found'
+      title: 'Page Not Found',
+      pageNotFoundMessage: 'The page you’re looking for doesn’t exist or may have moved.'
     }
   }
 }

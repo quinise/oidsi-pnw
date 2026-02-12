@@ -2,21 +2,31 @@
   <footer id="footer" class="bg-light text-primary py-3 mt-auto border-top">
     <div class="container text-center">
       <p class="mb-0 small">
-        Created by
+        {{ authorStatement }}
         <a
           target="_blank" rel="noopener noreferrer"
           href="https://quinise.ercolano.com/"
           aria-label="Link to developer's website"
           class="fw-semibold text-success text-decoration-none"
         >
-          Quinise<span class="sr-only"> (opens in a new tab)</span>
+          {{ authorName }}<span class="sr-only"> (opens in a new tab)</span>
         </a>
       </p>
     </div>
   </footer>
 </template>
 
-<script setup lang="ts"></script>
+<script lang="ts">
+export default {
+  name: 'FooterComponent',
+  data() {
+    return {
+      authorStatement: 'Created by ',
+      authorName: 'Quinise'
+    }
+  }
+}
+</script>
 
 <style scoped>
   footer {

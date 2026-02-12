@@ -131,7 +131,7 @@ export function useNavbarA11y(menuId: string) {
     }
   }
 
-  const toggle = () => {                           // <-- expose toggle for the hamburger
+  const toggle = () => {
     if (!collapseInstance) return
     collapseInstance.toggle()
   }

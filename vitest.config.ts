@@ -1,7 +1,9 @@
+import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
+  plugins: [vue()],
   resolve: {
     alias: [
       { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
@@ -9,8 +11,9 @@ export default defineConfig({
       { find: '@composables', replacement: fileURLToPath(new URL('./src/composables', import.meta.url)) }
     ]
   },
-  test: { // TODO: Config wide not being applied
+  test: {
     include: ['tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
-    environment: 'happy-dom'
+    environment: 'happy-dom',
+    globals: true
   }
 })

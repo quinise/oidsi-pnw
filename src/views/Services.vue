@@ -211,6 +211,14 @@ export default {
     background: transparent;
     border: none;
     font: inherit;
+    text-decoration: none;
+    cursor: default;
+  }
+
+  .accordion-toggle:hover,
+  .accordion-toggle:focus {
+    text-decoration: none;
+    color: inherit;
   }
 
   .accordion-content {

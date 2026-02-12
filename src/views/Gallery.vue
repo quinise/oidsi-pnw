@@ -4,9 +4,9 @@
 
       <!-- Intro -->
       <h1 data-testid="gallery-title" class="display-6 fw-semibold gradient-title mt-5 mb-3">
-        A nifẹ lati pin àwọn àkókò tí ó dára
+        {{ title }}
       </h1>
-      <h2 class="h5 text-black mb-4">We love to share good times</h2>
+      <h2 class="h5 text-black mb-4">{{ subtitle }}</h2>
 
       <!-- Responsive Carousel -->
       <div class="row justify-content-center">
@@ -91,8 +91,8 @@
   </section>
 </template>
 
-<script setup lang="ts">
-import { useCarouselFocus } from '@/composables/useCarouselFocus'; // keep your focus util
+<script lang="ts">
+import { useCarouselFocus } from '@/composables/useCarouselFocus';
 
 import img10 from '@/assets/images/ancestor-offering.jpeg';
 import img9 from '@/assets/images/cookout-crowd4.jpeg';
@@ -105,21 +105,32 @@ import img4 from '@/assets/images/gallery/omi-fasanmi-green.png';
 import img6 from '@/assets/images/gallery/omiero-base.png';
 import img8 from '@/assets/images/ile-at-conference.png';
 
-const slides = [
-  { src: img1,  alt: 'Three IFA priestesses smiling at sunset.' },
-  { src: img2,  alt: 'Aborisha gathered with three IFA priests seated on a mat.' },
-  { src: img3,  alt: 'Two priestesses in white posing playfully at an IFA conference.' },
-  { src: img4,  alt: 'Priest of Ogun and priestess of Yemoja in green/orange/white attire.' },
-  { src: img5,  alt: 'Priest of Shango and priestess of Yemoja at 2022 OIDSI conference.' },
-  { src: img6,  alt: 'Omiero ingredients arranged on a mat.' },
-  { src: img7,  alt: 'Small group making omieros outdoors, singing and chatting.' },
-  { src: img8,  alt: 'Ile Iwori-Bogbe group photo with Chief Obafemi at conference.' },
-  { src: img9,  alt: 'Community circle listening to an IFA priest speak.' },
-  { src: img10, alt: 'Ancestor offering table with fruit, flowers, candles, and water.' },
-]
+export default {
+  name: 'GalleryComponent',
+  data() {
+    const slides = [
+      { src: img1,  alt: 'Three IFA priestesses smiling at sunset.' },
+      { src: img2,  alt: 'Aborisha gathered with three IFA priests seated on a mat.' },
+      { src: img3,  alt: 'Two priestesses in white posing playfully at an IFA conference.' },
+      { src: img4,  alt: 'Priest of Ogun and priestess of Yemoja in green/orange/white attire.' },
+      { src: img5,  alt: 'Priest of Shango and priestess of Yemoja at 2022 OIDSI conference.' },
+      { src: img6,  alt: 'Omiero ingredients arranged on a mat.' },
+      { src: img7,  alt: 'Small group making omieros outdoors, singing and chatting.' },
+      { src: img8,  alt: 'Ile Iwori-Bogbe group photo with Chief Obafemi at conference.' },
+      { src: img9,  alt: 'Community circle listening to an IFA priest speak.' },
+      { src: img10, alt: 'Ancestor offering table with fruit, flowers, candles, and water.' },
+    ];
 
-// Tracks which slide is active so only that slide is focusable
-const { activeIndex } = useCarouselFocus('galleryCarousel')
+    const { activeIndex } = useCarouselFocus('galleryCarousel');
+
+    return {
+      title: 'A nifẹ lati pin àwọn àkókò tí ó dára',
+      subtitle: 'We love to share good times',
+      slides,
+      activeIndex
+    };
+  }
+};
 </script>
 
 <style scoped>

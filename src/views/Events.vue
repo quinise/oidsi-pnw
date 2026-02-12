@@ -4,7 +4,7 @@
 
       <!-- Title -->
       <h1 class="display-6 fw-semibold gradient-title my-5">
-        Seattle O.I.D.S.I. Events Calendar
+        {{ title }}
       </h1>
 
       <!-- Responsive calendar embed -->
@@ -22,7 +22,7 @@
           </div>
           <!--  Caption for screen readers / context -->
           <p class="text-secondary mt-2 mb-0">
-            Times shown in Pacific Time (America/Los_Angeles)
+            {{ timeZoneInfo }}
           </p>
         </div>
       </div>
@@ -30,6 +30,18 @@
     </div>
   </section>
 </template>
+
+<script lang="ts">
+export default {
+  name: 'EventsComponent',
+  data() {
+    return {
+      title: 'Seattle O.I.D.S.I. Events Calendar',
+      timeZoneInfo: 'Times shown in Pacific Time (America/Los_Angeles)'
+    };
+  }
+};
+</script>
 
 <style scoped>
   /* Slightly taller on larger screens while staying responsive */

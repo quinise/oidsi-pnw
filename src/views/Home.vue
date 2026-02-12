@@ -26,7 +26,7 @@
 
             <text text-anchor="middle" font-weight="800" font-size="48">
               <textPath href="#homeArc" xlink:href="#homeArc" startOffset="50%" fill="url(#homeGradient)">
-                Ile Iwori-Bogbe
+                {{ title }}
               </textPath>
             </text>
           </svg>
@@ -48,7 +48,7 @@
             <path id="subtitleArc" d="M 50 120 Q 300 60 550 120" fill="none" />
             <text class="text-secondary" text-anchor="middle" font-weight="700" font-size="32">
               <textPath href="#subtitleArc" xlink:href="#subtitleArc" startOffset="50%">
-                Seattle, Washington
+                {{ subtitle }}
               </textPath>
             </text>
           </svg>
@@ -89,9 +89,21 @@
   </section>
 </template>
 
-<script setup lang="ts">
-  import introImg from '@/assets/images/introduction.png';
-  import oiLogo from '@/assets/images/logo.png';
+<script lang="ts">
+import introImg from '@/assets/images/introduction.png';
+import oiLogo from '@/assets/images/logo.png';
+
+export default {
+  name: 'HomeComponent',
+  data() {
+    return {
+      title: 'Ile Iwori-Bogbe',
+      subtitle: 'Seattle, Washington',
+      introImg,
+      oiLogo
+    };
+  }
+};
 </script>
 
 <style scoped>

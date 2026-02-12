@@ -4,11 +4,11 @@
 
       <!-- Title -->
       <h1 class="display-6 fw-semibold gradient-title mt-5 mb-3">
-        Contact Seattle O.I.D.S.I.
+        {{ title }}
       </h1>
 
       <!-- Email blurb -->
-      <h2 class="h5 text-black mb-3">Send Us an Email</h2>
+      <h2 class="h5 text-black mb-3">{{ emailBlurb }}</h2>
 
       <!-- Contact form holder -->
       <div class="row justify-content-center">
@@ -29,7 +29,7 @@
             href="tel:+13478416087"
             aria-label="Call or text, phone number 3 4 7, 8 4 1, 6 0 8 7"
           >
-            Call or Text (347) 841-6087
+            {{ contactPhoneInfo }}
           </a>
         </div>
       </div>
@@ -38,8 +38,22 @@
   </section>
 </template>
 
-<script setup lang="ts">
-  import ContactForm from '@/views/partials/ContactForm.vue';
+<script lang="ts">
+import ContactForm from '@/views/partials/ContactForm.vue';
+
+export default {
+  name: 'ContactComponent',
+  components: {
+    ContactForm
+  },
+  data() {
+    return {
+      title: 'Contact Seattle O.I.D.S.I.',
+      emailBlurb: 'Send Us an Email',
+      contactPhoneInfo: 'Call or Text (347) 841-6087'
+    };
+  }
+};
 </script>
 
 <style scoped>
