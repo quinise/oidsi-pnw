@@ -17,7 +17,8 @@
               aria-label="OIDSI-PNW Google Calendar (Seattle)"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FLos_Angeles&bgcolor=%23ffffff&src=M2Q0NTBkZjc1ZmJlNDk5Y2ZlZTJiMWFkYWRhMWM5YTNjZTdlZTc2MmUwZTliMTZlYWZmMmQ0OGE0MDYyODJhYkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23C0CA33"
+              :src="iframeSrc"
+              :data-calendar-src="calendarSrc"
             ></iframe>
           </div>
           <!--  Caption for screen readers / context -->
@@ -35,9 +36,14 @@
 export default {
   name: 'EventsComponent',
   data() {
+    const calendarSrc = 'https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FLos_Angeles&bgcolor=%23ffffff&src=M2Q0NTBkZjc1ZmJlNDk5Y2ZlZTJiMWFkYWRhMWM5YTNjZTdlZTc2MmUwZTliMTZlYWZmMmQ0OGE0MDYyODJhYkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23C0CA33'
+    const isTestEnv = import.meta.env.MODE === 'test' || import.meta.env.VITEST
+
     return {
       title: 'Seattle O.I.D.S.I. Events Calendar',
-      timeZoneInfo: 'Times shown in Pacific Time (America/Los_Angeles)'
+      timeZoneInfo: 'Times shown in Pacific Time (America/Los_Angeles)',
+      calendarSrc,
+      iframeSrc: isTestEnv ? null : calendarSrc,
     };
   }
 };

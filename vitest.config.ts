@@ -14,6 +14,7 @@ export default defineConfig({
   test: {
     include: ['tests/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
     environment: 'happy-dom',
-    globals: true
+    globals: true,
+    setupFiles: ['./tests/setup.ts']
   }
 })
