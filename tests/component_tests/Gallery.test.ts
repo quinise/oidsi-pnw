@@ -42,7 +42,7 @@ describe('GalleryComponent', () => {
 
     expect(images[0]?.getAttribute('src')).toBeTruthy()
     expect(images[1]?.getAttribute('src')).toBeTruthy()
-    expect(images.slice(2).every((img) => img.getAttribute('src') === null)).toBe(true)
+    expect(images.slice(2).every((img) => !img.getAttribute('src'))).toBe(true)
   })
 
   test('sets image loading priority attributes for faster first paint', () => {

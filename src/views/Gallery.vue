@@ -29,7 +29,7 @@
               >
                 <img
                   class="gallery-img"
-                  :src="loadedSlideIndexes.has(i) ? slide.src : undefined"
+                  :src="loadedSlideIndexes.has(i) ? slide.src : null"
                   :alt="slide.alt"
                   :loading="i === 0 ? 'eager' : 'lazy'"
                   :fetchpriority="i === 0 ? 'high' : 'low'"
@@ -135,8 +135,11 @@ export default {
   },
   watch: {
     activeIndex(nextIndex) {
-      this.loadedSlideIndexes.add(nextIndex);
-      this.loadedSlideIndexes.add((nextIndex + 1) % this.slides.length);
+      const totalSlides = this.slides.length;
+      const prevIndex = (nextIndex - 1 + totalSlides) % totalSlides;
+      const followingIndex = (nextIndex + 1) % totalSlides;
+
+      this.loadedSlideIndexes = new Set([prevIndex, nextIndex, followingIndex]);
     }
   }
 };
