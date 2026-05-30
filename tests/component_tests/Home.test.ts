@@ -32,6 +32,13 @@ describe('HomeComponent', () => {
     expect(getByAltText(/American aborisha and IFA priest women/i)).toBeTruthy()
   })
 
+  test('prioritizes loading for the intro image', () => {
+    const { getByAltText } = render(HomeComponent)
+    const introImage = getByAltText(/American aborisha and IFA priest women/i)
+    expect(introImage.getAttribute('loading')).toBe('eager')
+    expect(introImage.getAttribute('fetchpriority')).toBe('high')
+  })
+
   test('renders Proud Member of text', () => {
     const { getByText } = render(HomeComponent)
     expect(getByText('Proud Member of')).toBeTruthy()
