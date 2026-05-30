@@ -26,7 +26,11 @@ describe('ServicesComponent', () => {
     const { getByAltText } = render(ServicesComponent, {
       global: { plugins: [router] }
     })
-    expect(getByAltText(/Ifa offering to Yemoja/i)).toBeTruthy()
+    const image = getByAltText(/Ifa offering to Yemoja/i)
+    expect(image).toBeTruthy()
+    expect(image.getAttribute('loading')).toBe('lazy')
+    expect(image.getAttribute('decoding')).toBe('async')
+    expect(image.getAttribute('fetchpriority')).toBe('low')
   })
 
   test('renders contact call-to-action heading', () => {

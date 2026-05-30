@@ -12,7 +12,11 @@ describe('AboutComponent', () => {
 
   test('renders image', () => {
     const { getByAltText } = render(AboutComponent)
-    expect(getByAltText(/group of American aborisha casually dressed/i)).toBeTruthy()
+    const image = getByAltText(/group of American aborisha casually dressed/i)
+    expect(image).toBeTruthy()
+    expect(image.getAttribute('loading')).toBe('lazy')
+    expect(image.getAttribute('decoding')).toBe('async')
+    expect(image.getAttribute('fetchpriority')).toBe('low')
   })
 
   test('renders mission statement content', () => {
