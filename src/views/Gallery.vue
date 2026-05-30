@@ -29,9 +29,11 @@
               >
                 <img
                   class="gallery-img"
-                  :src="slide.src"
+                  :src="loadedSlideIndexes.has(i) ? slide.src : undefined"
                   :alt="slide.alt"
-                  loading="lazy"
+                  :loading="i === 0 ? 'eager' : 'lazy'"
+                  :fetchpriority="i === 0 ? 'high' : 'low'"
+                  decoding="async"
                   :tabindex="i === activeIndex ? 0 : -1"
                   :aria-hidden="i !== activeIndex"
                 />
@@ -127,8 +129,15 @@ export default {
       title: 'A nifẹ lati pin àwọn àkókò tí ó dára',
       subtitle: 'We love to share good times',
       slides,
-      activeIndex
+      activeIndex,
+      loadedSlideIndexes: new Set([0, 1])
     };
+  },
+  watch: {
+    activeIndex(nextIndex) {
+      this.loadedSlideIndexes.add(nextIndex);
+      this.loadedSlideIndexes.add((nextIndex + 1) % this.slides.length);
+    }
   }
 };
 </script>
