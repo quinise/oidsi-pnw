@@ -37,6 +37,7 @@ describe('HomeComponent', () => {
     const introImage = getByAltText(/American aborisha and IFA priest women/i)
     expect(introImage.getAttribute('loading')).toBe('eager')
     expect(introImage.getAttribute('fetchpriority')).toBe('high')
+    expect(introImage.getAttribute('decoding')).toBe('async')
   })
 
   test('renders Proud Member of text', () => {
