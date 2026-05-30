@@ -14,9 +14,6 @@
             class="img-fluid d-block mx-auto offering-img rounded-3"
             :src="offeringImg"
             alt="An Ifa offering to Yemoja at Alki Beach: melons, bananas, pineapple rounds, strawberries, and bouquets on a turquoise cloth."
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
           />
         </div>
       </div>
@@ -86,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import offeringImg from '@/assets/images/yemoja-offering.png';
+import offeringImg from '@/assets/images/yemoja-offering.webp';
 
 export default {
   name: 'ServicesComponent',

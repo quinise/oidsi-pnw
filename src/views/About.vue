@@ -14,9 +14,6 @@
             class="img-fluid d-block mx-auto"
             :src="aboutImg"
             alt="A group of American aborisha casually dressed, posing for a picture outside on a porch."
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
             style="max-width: 380px;"
           />
           <p class="about-paragraph mt-5">
@@ -33,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import aboutImg from '@/assets/images/ile-pic-1.png';
+import aboutImg from '@/assets/images/ile-pic-1.webp';
 
 export default {
   name: 'AboutComponent',

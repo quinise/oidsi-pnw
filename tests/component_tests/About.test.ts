@@ -14,9 +14,7 @@ describe('AboutComponent', () => {
     const { getByAltText } = render(AboutComponent)
     const image = getByAltText(/group of American aborisha casually dressed/i)
     expect(image).toBeTruthy()
-    expect(image.getAttribute('loading')).toBe('lazy')
-    expect(image.getAttribute('decoding')).toBe('async')
-    expect(image.getAttribute('fetchpriority')).toBe('low')
+    expect(image.getAttribute('src')).toContain('.webp')
   })
 
   test('renders mission statement content', () => {
