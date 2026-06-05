@@ -98,14 +98,14 @@ import { useCarouselFocus } from '@/composables/useCarouselFocus';
 
 import img10 from '@/assets/images/ancestor-offering.jpeg';
 import img9 from '@/assets/images/cookout-crowd4.jpeg';
-import img1 from '@/assets/images/gallery/3-women.png';
-import img2 from '@/assets/images/gallery/cookout5.png';
-import img3 from '@/assets/images/gallery/kim-omi-posing-white.png';
-import img7 from '@/assets/images/gallery/making-omieros.png';
-import img5 from '@/assets/images/gallery/omi-and-khepra-green.png';
-import img4 from '@/assets/images/gallery/omi-fasanmi-green.png';
-import img6 from '@/assets/images/gallery/omiero-base.png';
-import img8 from '@/assets/images/ile-at-conference.png';
+import img1 from '@/assets/images/gallery/3-women.webp';
+import img2 from '@/assets/images/gallery/cookout5.webp';
+import img3 from '@/assets/images/gallery/kim-omi-posing-white.webp';
+import img7 from '@/assets/images/gallery/making-omieros.webp';
+import img5 from '@/assets/images/gallery/omi-and-khepra-green.webp';
+import img4 from '@/assets/images/gallery/omi-fasanmi-green.webp';
+import img6 from '@/assets/images/gallery/omiero-base.webp';
+import img8 from '@/assets/images/ile-at-conference.webp';
 
 export default {
   name: 'GalleryComponent',
