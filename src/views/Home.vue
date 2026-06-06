@@ -93,7 +93,7 @@
 </template>
 
 <script lang="ts">
-import introImg from '@/assets/images/introduction.webp';
+import introImg from '@/assets/images/introduction.png';
 import oiLogo from '@/assets/images/logo.png';
 
 export default {
