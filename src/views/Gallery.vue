@@ -29,9 +29,11 @@
               >
                 <img
                   class="gallery-img"
-                  :src="slide.src"
+                  :src="loadedSlideIndexes.has(i) ? slide.src : null"
                   :alt="slide.alt"
-                  loading="lazy"
+                  :loading="i === 0 ? 'eager' : 'lazy'"
+                  :fetchpriority="i === 0 ? 'high' : 'low'"
+                  decoding="async"
                   :tabindex="i === activeIndex ? 0 : -1"
                   :aria-hidden="i !== activeIndex"
                 />
@@ -96,14 +98,14 @@ import { useCarouselFocus } from '@/composables/useCarouselFocus';
 
 import img10 from '@/assets/images/ancestor-offering.jpeg';
 import img9 from '@/assets/images/cookout-crowd4.jpeg';
-import img1 from '@/assets/images/gallery/3-women.png';
-import img2 from '@/assets/images/gallery/cookout5.png';
-import img3 from '@/assets/images/gallery/kim-omi-posing-white.png';
-import img7 from '@/assets/images/gallery/making-omieros.png';
-import img5 from '@/assets/images/gallery/omi-and-khepra-green.png';
-import img4 from '@/assets/images/gallery/omi-fasanmi-green.png';
-import img6 from '@/assets/images/gallery/omiero-base.png';
-import img8 from '@/assets/images/ile-at-conference.png';
+import img1 from '@/assets/images/gallery/3-women.webp';
+import img2 from '@/assets/images/gallery/cookout5.webp';
+import img3 from '@/assets/images/gallery/kim-omi-posing-white.webp';
+import img7 from '@/assets/images/gallery/making-omieros.webp';
+import img5 from '@/assets/images/gallery/omi-and-khepra-green.webp';
+import img4 from '@/assets/images/gallery/omi-fasanmi-green.webp';
+import img6 from '@/assets/images/gallery/omiero-base.webp';
+import img8 from '@/assets/images/ile-at-conference.webp';
 
 export default {
   name: 'GalleryComponent',
@@ -127,8 +129,18 @@ export default {
       title: 'A nifẹ lati pin àwọn àkókò tí ó dára',
       subtitle: 'We love to share good times',
       slides,
-      activeIndex
+      activeIndex,
+      loadedSlideIndexes: new Set([0, 1])
     };
+  },
+  watch: {
+    activeIndex(nextIndex) {
+      const totalSlides = this.slides.length;
+      const prevIndex = (nextIndex - 1 + totalSlides) % totalSlides;
+      const followingIndex = (nextIndex + 1) % totalSlides;
+
+      this.loadedSlideIndexes = new Set([prevIndex, nextIndex, followingIndex]);
+    }
   }
 };
 </script>

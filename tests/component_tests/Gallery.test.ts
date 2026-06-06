@@ -36,6 +36,26 @@ describe('GalleryComponent', () => {
     expect(slides.length).toBeGreaterThan(0)
   })
 
+  test('preloads only current and next slide images initially', () => {
+    const { container } = render(GalleryComponent)
+    const images = Array.from(container.querySelectorAll('.gallery-img'))
+
+    expect(images[0]?.getAttribute('src')).toBeTruthy()
+    expect(images[1]?.getAttribute('src')).toBeTruthy()
+    expect(images.slice(2).every((img) => !img.getAttribute('src'))).toBe(true)
+  })
+
+  test('sets image loading priority attributes for faster first paint', () => {
+    const { container } = render(GalleryComponent)
+    const images = container.querySelectorAll('.gallery-img')
+
+    expect(images[0]?.getAttribute('loading')).toBe('eager')
+    expect(images[0]?.getAttribute('fetchpriority')).toBe('high')
+    expect(images[0]?.getAttribute('decoding')).toBe('async')
+    expect(images[1]?.getAttribute('loading')).toBe('lazy')
+    expect(images[1]?.getAttribute('fetchpriority')).toBe('low')
+  })
+
   test('renders carousel indicators', () => {
     const { container } = render(GalleryComponent)
     const indicators = container.querySelector('.carousel-indicators')
@@ -181,13 +201,15 @@ describe('GalleryComponent', () => {
       }
     })
 
-    test('all carousel images have lazy loading', () => {
+    test('carousel images use eager loading only for first slide', () => {
       const { container } = render(GalleryComponent)
       const images = container.querySelectorAll('.gallery-img')
-      
-      images.forEach(img => {
-        expect(img.getAttribute('loading')).toBe('lazy')
-      })
+
+      expect(images[0]?.getAttribute('loading')).toBe('eager')
+
+      for (let i = 1; i < images.length; i++) {
+        expect(images[i]?.getAttribute('loading')).toBe('lazy')
+      }
     })
 
     test('all carousel images have alt text', () => {
