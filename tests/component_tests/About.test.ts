@@ -12,7 +12,9 @@ describe('AboutComponent', () => {
 
   test('renders image', () => {
     const { getByAltText } = render(AboutComponent)
-    expect(getByAltText(/group of American aborisha casually dressed/i)).toBeTruthy()
+    const image = getByAltText(/group of American aborisha casually dressed/i)
+    expect(image).toBeTruthy()
+    expect(image.getAttribute('src')).toContain('.webp')
   })
 
   test('renders mission statement content', () => {

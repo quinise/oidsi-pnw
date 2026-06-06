@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       title: 'Page Not Found',
-      pageNotFoundMessage: 'The page you’re looking for doesn’t exist or may have moved.'
+      pageNotFoundMessage: "The page you\u2019re looking for doesn\u2019t exist or may have moved."
     }
   }
 }

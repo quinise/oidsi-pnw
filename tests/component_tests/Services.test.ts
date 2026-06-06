@@ -26,7 +26,9 @@ describe('ServicesComponent', () => {
     const { getByAltText } = render(ServicesComponent, {
       global: { plugins: [router] }
     })
-    expect(getByAltText(/Ifa offering to Yemoja/i)).toBeTruthy()
+    const image = getByAltText(/Ifa offering to Yemoja/i)
+    expect(image).toBeTruthy()
+    expect(image.getAttribute('src')).toContain('.webp')
   })
 
   test('renders contact call-to-action heading', () => {

@@ -83,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import offeringImg from '@/assets/images/yemoja-offering.png';
+import offeringImg from '@/assets/images/yemoja-offering.webp';
 
 export default {
   name: 'ServicesComponent',
