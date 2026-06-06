@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import aboutImg from '@/assets/images/ile-pic-1.png';
+import aboutImg from '@/assets/images/ile-pic-1.webp';
 
 export default {
   name: 'AboutComponent',

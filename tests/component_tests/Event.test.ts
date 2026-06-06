@@ -26,7 +26,7 @@ describe('EventsComponent', () => {
   test('calendar iframe has correct source URL', () => {
     const { container } = render(EventsComponent)
     const iframe = container.querySelector('iframe')
-    expect(iframe?.getAttribute('src')).toContain('calendar.google.com')
+    expect(iframe?.getAttribute('data-calendar-src')).toContain('calendar.google.com')
   })
 
   describe('Mobile viewport', () => {

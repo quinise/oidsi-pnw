@@ -62,6 +62,9 @@
             class="img-fluid rounded"
             :src="introImg"
             alt="A group of American aborisha and IFA priest women dressed in white pose for a picture in a classroom at AfricaTown."
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
         </div>
       </div>

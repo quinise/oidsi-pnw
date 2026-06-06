@@ -28,7 +28,7 @@ export function useContactForm() {
     const el = elMap[field]
     if (!el) return
 
-    const isInvalid = !el.checkValidity()
+    const isInvalid = !el.validity.valid
     invalidFields[field] = isInvalid
 
     // SR-only live update for the field error
