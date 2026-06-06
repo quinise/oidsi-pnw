@@ -2,8 +2,12 @@
 
 import ContactFormComponent from '@/views/partials/ContactForm.vue'
 import { fireEvent, render } from '@testing-library/vue'
-import { describe, expect, test, vi } from 'vitest'
+import { afterAll, beforeAll, describe, expect, test, vi } from 'vitest'
 import { nextTick } from 'vue'
+
+vi.mock('@emailjs/browser', () => ({
+  default: { sendForm: vi.fn(() => new Promise(() => {})) }
+}))
 
 describe('ContactFormComponent', () => {
   test('renders form element', () => {
@@ -167,6 +171,13 @@ describe('ContactFormComponent', () => {
   })
 
   describe('Behavioral Logic Tests', () => {
+    beforeAll(() => {
+      vi.stubEnv('VITE_EMAILJS_SERVICE_ID', 'test-service')
+      vi.stubEnv('VITE_EMAILJS_TEMPLATE_ID', 'test-template')
+      vi.stubEnv('VITE_EMAILJS_PUBLIC_KEY', 'test-key')
+    })
+    afterAll(() => { vi.unstubAllEnvs() })
+
     test('invalid name field gets is-invalid class on blur', async () => {
       const { container } = render(ContactFormComponent)
       const nameInput = container.querySelector('#cf-name') as HTMLInputElement
