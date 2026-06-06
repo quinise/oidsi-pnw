@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@testing-library/vue": "^8.1.0",
-    "@types/node": "^20.19.15",
+    "@types/node": "^24.0.0",
     "@vitejs/plugin-vue": "^6.0.4",
     "@vue/test-utils": "^2.4.6",
     "axe-core": "^4.10.3",
@@ -39,6 +39,6 @@
     "vue-eslint-parser": "^10.2.0"
   },
   "engines": {
-    "node": ">=20.19.0"
+    "node": ">=24.0.0"
   }
 }
