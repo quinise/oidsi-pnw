@@ -1,8 +1,9 @@
 // @vitest-environment happy-dom
 
 import ContactFormComponent from '@/views/partials/ContactForm.vue'
-import { render } from '@testing-library/vue'
-import { describe, expect, test } from 'vitest'
+import { fireEvent, render } from '@testing-library/vue'
+import { describe, expect, test, vi } from 'vitest'
+import { nextTick } from 'vue'
 
 describe('ContactFormComponent', () => {
   test('renders form element', () => {
@@ -162,6 +163,179 @@ describe('ContactFormComponent', () => {
       const { container } = render(ContactFormComponent)
       const form = container.querySelector('form.needs-validation')
       expect(form).toBeTruthy()
+    })
+  })
+
+  describe('Behavioral Logic Tests', () => {
+    test('invalid name field gets is-invalid class on blur', async () => {
+      const { container } = render(ContactFormComponent)
+      const nameInput = container.querySelector('#cf-name') as HTMLInputElement
+      expect(nameInput).toBeTruthy()
+
+      await fireEvent.blur(nameInput)
+      await nextTick()
+
+      expect(nameInput.classList.contains('is-invalid')).toBe(true)
+      expect(nameInput.getAttribute('aria-invalid')).toBe('true')
+    })
+
+    test('valid name field does not get is-invalid class on blur', async () => {
+      const { container } = render(ContactFormComponent)
+      const nameInput = container.querySelector('#cf-name') as HTMLInputElement
+      expect(nameInput).toBeTruthy()
+
+      nameInput.value = 'John Doe'
+      await fireEvent.blur(nameInput)
+      await nextTick()
+
+      expect(nameInput.classList.contains('is-invalid')).toBe(false)
+    })
+
+    test('invalid email field gets is-invalid class on blur', async () => {
+      const { container } = render(ContactFormComponent)
+      const emailInput = container.querySelector('#cf-email') as HTMLInputElement
+      expect(emailInput).toBeTruthy()
+
+      emailInput.value = 'invalid-email'
+      await fireEvent.blur(emailInput)
+      await nextTick()
+
+      expect(emailInput.classList.contains('is-invalid')).toBe(true)
+      expect(emailInput.getAttribute('aria-invalid')).toBe('true')
+    })
+
+    test('valid email field does not get is-invalid class on blur', async () => {
+      const { container } = render(ContactFormComponent)
+      const emailInput = container.querySelector('#cf-email') as HTMLInputElement
+      expect(emailInput).toBeTruthy()
+
+      emailInput.value = 'test@example.com'
+      await fireEvent.blur(emailInput)
+      await nextTick()
+
+      expect(emailInput.classList.contains('is-invalid')).toBe(false)
+    })
+
+    test('invalid message field gets is-invalid class on blur', async () => {
+      const { container } = render(ContactFormComponent)
+      const messageTextarea = container.querySelector('#cf-message') as HTMLTextAreaElement
+      expect(messageTextarea).toBeTruthy()
+
+      await fireEvent.blur(messageTextarea)
+      await nextTick()
+
+      expect(messageTextarea.classList.contains('is-invalid')).toBe(true)
+      expect(messageTextarea.getAttribute('aria-invalid')).toBe('true')
+    })
+
+    test('valid message field does not get is-invalid class on blur', async () => {
+      const { container } = render(ContactFormComponent)
+      const messageTextarea = container.querySelector('#cf-message') as HTMLTextAreaElement
+      expect(messageTextarea).toBeTruthy()
+
+      messageTextarea.value = 'This is a valid message'
+      await fireEvent.blur(messageTextarea)
+      await nextTick()
+
+      expect(messageTextarea.classList.contains('is-invalid')).toBe(false)
+    })
+
+    test('submit button shows spinner and disabled state during submission', async () => {
+      const { container, getByText } = render(ContactFormComponent)
+      const form = container.querySelector('form') as HTMLFormElement
+      const nameInput = container.querySelector('#cf-name') as HTMLInputElement
+      const emailInput = container.querySelector('#cf-email') as HTMLInputElement
+      const messageTextarea = container.querySelector('#cf-message') as HTMLTextAreaElement
+
+      nameInput.value = 'Test User'
+      emailInput.value = 'test@example.com'
+      messageTextarea.value = 'Test message'
+
+      form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }))
+      
+      await new Promise(resolve => setTimeout(resolve, 50))
+
+      const submitButton = container.querySelector('button[type="submit"]') as HTMLButtonElement
+      expect(submitButton.hasAttribute('disabled')).toBe(true)
+      expect(submitButton.getAttribute('aria-busy')).toBe('true')
+    })
+
+    test('honeypot prevents actual form submission when filled', async () => {
+      const { container } = render(ContactFormComponent)
+      const form = container.querySelector('form') as HTMLFormElement
+      const honeypot = container.querySelector('input[name="website"]') as HTMLInputElement
+      const nameInput = container.querySelector('#cf-name') as HTMLInputElement
+      const emailInput = container.querySelector('#cf-email') as HTMLInputElement
+      const messageTextarea = container.querySelector('#cf-message') as HTMLTextAreaElement
+
+      nameInput.value = 'Bot User'
+      emailInput.value = 'bot@example.com'
+      messageTextarea.value = 'Spam message'
+      honeypot.value = 'http://spam.com'
+
+      form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }))
+      
+      await new Promise(resolve => setTimeout(resolve, 100))
+
+      const successMessage = container.querySelector('[data-testid="contact-success"]')
+      expect(successMessage).toBeTruthy()
+    })
+
+    test('form prevents default submission behavior', () => {
+      const { container } = render(ContactFormComponent)
+      const form = container.querySelector('form') as HTMLFormElement
+      
+      const submitEvent = new Event('submit', { bubbles: true, cancelable: true })
+      const preventDefaultSpy = vi.spyOn(submitEvent, 'preventDefault')
+      
+      form.dispatchEvent(submitEvent)
+      
+      expect(preventDefaultSpy).toHaveBeenCalled()
+    })
+
+    test('error message displays when form is invalid', async () => {
+      const { container } = render(ContactFormComponent)
+      const form = container.querySelector('form') as HTMLFormElement
+
+      await fireEvent.submit(form)
+      await nextTick()
+      await new Promise(resolve => setTimeout(resolve, 100))
+
+      const errorMessage = container.querySelector('[data-testid="contact-error"]')
+      expect(errorMessage).toBeTruthy()
+    })
+
+    test('form fields have correct aria-errormessage attributes', () => {
+      const { container } = render(ContactFormComponent)
+      
+      const nameInput = container.querySelector('#cf-name')
+      const emailInput = container.querySelector('#cf-email')
+      const messageTextarea = container.querySelector('#cf-message')
+
+      expect(nameInput?.getAttribute('aria-errormessage')).toBe('cf-name-error')
+      expect(emailInput?.getAttribute('aria-errormessage')).toBe('cf-email-error')
+      expect(messageTextarea?.getAttribute('aria-errormessage')).toBe('cf-message-error')
+    })
+
+    test('submit button text changes when submitting', async () => {
+      const { container } = render(ContactFormComponent)
+      const form = container.querySelector('form') as HTMLFormElement
+      const nameInput = container.querySelector('#cf-name') as HTMLInputElement
+      const emailInput = container.querySelector('#cf-email') as HTMLInputElement
+      const messageTextarea = container.querySelector('#cf-message') as HTMLTextAreaElement
+      const submitButton = container.querySelector('button[type="submit"]') as HTMLButtonElement
+
+      expect(submitButton.textContent?.trim()).toBe('Send')
+
+      nameInput.value = 'Test User'
+      emailInput.value = 'test@example.com'
+      messageTextarea.value = 'Test message'
+
+      form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }))
+      
+      await new Promise(resolve => setTimeout(resolve, 50))
+
+      expect(submitButton.textContent?.includes('Sending')).toBe(true)
     })
   })
 })

@@ -5,6 +5,7 @@ import { render } from '@testing-library/vue'
 import { describe, expect, test } from 'vitest'
 import { createMemoryHistory, createRouter } from 'vue-router'
 
+// Create a mock router for testing
 const router = createRouter({
   history: createMemoryHistory(),
   routes: [
