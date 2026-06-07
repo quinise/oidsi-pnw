@@ -13,7 +13,7 @@
 
 The OIDSI-PNW (Seattle Chapter, Ile Iwore-Bogbe) website provides information about chapter events and community activities. Built with Vue.js and Firebase, it features a custom design, a contact form for outreach, and integrated Google Calendar for event tracking.
 
-**Live Site:** [oidsi-pnw.web.app](https://oidsi-pnw.web.app)
+**Live Site:** [oidsi-pnw.com](https://www.oidsi-pnw.com/)
 
 ## Features
 
